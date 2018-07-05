@@ -3,7 +3,7 @@
     "importExistingSpec": false,
     "name": "Kiri",
     "repo": "KiriDev/apiKiri",
-    "splitSpec": false,
+    "splitSpec": true,
     "samples": true,
     "installSwaggerUI": true
   }
