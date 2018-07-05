@@ -1,9 +1,9 @@
 {
   "generator-openapi-repo": {
     "importExistingSpec": false,
-    "name": "Kiri",
+    "name": "KiriDocs",
     "repo": "KiriDev/apiKiri",
-    "splitSpec": true,
+    "splitSpec": false,
     "samples": true,
     "installSwaggerUI": true
   }

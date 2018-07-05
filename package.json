@@ -1,5 +1,5 @@
 {
-  "name": "Kiri-openapi-spec",
+  "name": "KiriDocs-openapi-spec",
   "version": "0.0.1",
   "dependencies": {
     "bower": "^1.7.7",

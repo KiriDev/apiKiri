@@ -1,4 +1,4 @@
-# Kiri OpenAPI Specification
+# KiriDocs OpenAPI Specification
 [![Build Status](https://travis-ci.org/KiriDev/apiKiri.svg?branch=master)](https://travis-ci.org/KiriDev/apiKiri)
 
 ## Steps to finish
