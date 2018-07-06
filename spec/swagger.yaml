@@ -1,146 +1,134 @@
-# This is an **example** API to demontstrate features of OpenAPI specification.
-# It doesn't cover all OpenAPI features. For more full example check out: https://github.com/APIs-guru/petstore_extended
-
+---
 swagger: '2.0'
-# You should specify common part of your endpoints in the following format:
-#   <schemes>://<host><basepath>
 schemes:
-  - http # Remove if your API doesn't support HTTP
-  - https # Remove if your API donsn't support HTTPS
-host: example.com # Replace with your hostname. You can also specify port e.g. example.com:777
-basePath: /api/v1 # Replace with your basePath. Note: SHOULD begin with '/'.
+- http
+- https
+host: us-central1-db-kiri.cloudfunctions.net
+basePath: '/'
 info:
-  # Describe your API here, you can use GFM (https://guides.github.com/features/mastering-markdown) here
-  description: |
-    This is an **example** API to demontstrate features of OpenAPI specification
-    # Introduction
-    This specification is intended to to be a good starting point for describint your API in 
-    [OpenAPI/Swagger format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
-    It also demonstrates features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo) tool and 
-    [ReDoc](https://github.com/Rebilly/ReDoc) documentation engine. So beyond the standard OpenAPI syntax we use a few 
-    [vendor extensions](https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md).
-    
-    # OpenAPI Specification
-    The goal of The OpenAPI Specification is to define a standard, language-agnostic interface to REST APIs which
-    allows both humans and computers to discover and understand the capabilities of the service without access to source
-    code, documentation, or through network traffic inspection. When properly defined via OpenAPI, a consumer can 
-    understand and interact with the remote service with a minimal amount of implementation logic. Similar to what
-    interfaces have done for lower-level programming, OpenAPI removes the guesswork in calling the service.
-
-  version: '1.0.0' # Your API version
-  # It can be any string but it is better to use semantic versioning: http://semver.org/
-  # Warning: OpenAPI require version to be string, but without quotation YAML can recognize it as number.
-
-  title: Example.com # Replace with your API title
-  # Keep it simple. Don't add "API" or verison at the end of the string.
-
-  termsOfService: 'https://example.com/terms/' # [Optional] Replace with an URL to your ToS
+  description: "This is an API for direct connection and data synchronization.\n#
+    Introduction\nThis API allows you to Read, Write, Modify and Delete information
+    from your clients and \nthus create a link between our systems.\n\n# API Specification\nThe
+    goal of the API Specification is to define a standard, language-agnostic interface
+    which allows both humans\nand computers to discover and understand the capabilities
+    of the service without access to source code,\ndocumentation, or through network
+    traffic inspection. A consumer can understand and interact with the remote service
+    with\na minimal amount of implementation logic. Similar to what interfaces have
+    done for lower-level programming,\nthis API removes the guesswork in calling the
+    service."
+  version: '1.0'
+  title: Doc for Kiri Api
+  termsOfService: https://kiri.mobi/web/politicadeprivacidad.html
   contact:
-    email: contact@example.com # [Optional] Replace with your contact email
-    url: 'http://example.com/contact' # [Optional] Replace with link to your contact form
+    email: dev@kiri.mobi
+    url: https://kiri.mobi
   license:
     name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
   x-logo:
-    url: 'https://apis.guru/openapi-template/logo.png'
-externalDocs:
-  description: Find out how to create Github repo for your OpenAPI spec.
-  url: 'https://github.com/Rebilly/generator-openapi-repo'
+    url: https://firebasestorage.googleapis.com/v0/b/db-kiri.appspot.com/o/public%2Flogo%2Fkiri.png?alt=media&token=c98d1731-00ac-404b-99de-d8ac1b06d067
 produces:
-  # List of mime types your API endpoins can return.
-  # This is a global default. You can OVERWRITE it in each specific operation.
-  # Remove the ones not used in your API
-  - application/json
-  - application/xml
-  - text/csv
-  # you can add any mime type your API produces to the list
+- application/json
+- application/xml
+- text/csv
 consumes:
-  # List of mime types your API endpoins consumes.
-  # This is a global default. You can OVERWRITE it in each specific operation.
-  # Remove the ones not supported by your API
-  - application/json
-  - application/xml
-  # you can add any mime type your API consumes to the list
-
-# A list of tags used by the specification with additional metadata.
-# The order of the tags can be used to reflect on their order by the parsing tools.
+- application/json
+- application/xml
 tags:
-  - name: Echo
-    description: Example echo operations
-  - name: User
-    description: Operations about user
-# Security scheme definitions that can be used across the specification.
-securityDefinitions:
-  main_auth: # security definition name (you can name it as you want)
-    type: oauth2 # authorization type, one of: oauth2, basic, apiKey
-    # the following options are specific to oauth2 type
-    authorizationUrl: 'http://example.com/api/oauth/dialog'
-    flow: implicit
-    scopes:
-      'read:users': read users info
-      'write:users': modify or remove users
-  api_key: # security definition name (you can name it as you want)
-    type: apiKey
-    # The following options are specific to apiKey type
-    in: header # Where API key will be passed: header or query
-    name: api_key # API key paramteer name
-
-
-# Holds the relative paths to the individual endpoints. The path is appended to the
-# basePath in order to construct the full URL. 
+- name: Read
+  description: Example Read operations
+- name: Echo
+  description: Example echo operations
+- name: User
+  description: Operations about user
 paths:
-  '/users/{username}': # path parameter in curly braces
-    # documentation for GET operation for this path
-    
-    # parameters list that are used with each operation for this path
+  "/transaction/":
+    parameters: []
+    post:
+      tags:
+      - Read
+      summary: Get information from the database
+      description: |-
+        Using the `action` parameter in read, you can get the information from the database.
+        It is possible to specify the reference table `ref` and the key of the value `key` in the search.
+      operationId: readDB
+      parameters:
+      - in: header
+        name: Content-Type
+        description: application/json
+        required: true
+        type: string
+        x-example: Content-Type:application/json
+      - in: body
+        name: body
+        description: Read specific data
+        required: true
+        schema:
+          "$ref": "#/definitions/BodyRead"
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: ''
+          examples:
+            application/json:
+              name: hernan bruno
+              profileImage: https://URL/profile-4.jpg
+              code: '00001'
+              password: '00001'
+              id: '30400500'
+        '400':
+          description: ''
+          examples:
+            application/json:
+              Error: Valores Incorrectos
+              Request:
+                action: Invalid action or
+                version: Invalid version or
+                token: Tzc9amhGTH2cHvmao1t2
+                ref: Invalid Ref or
+                key: Invalid Key
+        '403':
+          description: ''
+          examples:
+            application/json:
+              Error: Token Incorrecto
+              Request:
+                action: read
+                version: '1.0'
+                token: Non-existent-Token
+                ref: Sellers
+                key: '00001'
+  "/users/{username}":
     parameters:
-      - name: pretty_print
-        in: query # place where paramter is passed: path, header, query or body, formData
-        description: Pretty print response
-        # type of the paramter: string, number, integer, boolean, array
-        type: boolean
+    - name: pretty_print
+      in: query
+      description: Pretty print response
+      type: boolean
     get:
       tags:
-        - User
-      
-      # summary is up to 120 symbold but we recommend to be shortest as possible
+      - User
       summary: Get user by user name
-      
-      # you can use GFM in operation description too: https://guides.github.com/features/mastering-markdown
-      description: | 
-        Some description of the operation. 
-        You can use `markdown` here.
-      
-      # operationId should be unique across the whole specification
+      description: "Some description of the operation. \nYou can use `markdown` here.\n"
       operationId: getUserByName
-      
-      # list of parameters for the operation
       parameters:
-        - name: username
-          in: path
-          description: 'The name that needs to be fetched'
-          required: true
-          type: string
-        - name: with_email
-          in: query
-          description: Filter users without email
-          type: boolean
-      
-      # security schemas applied to this operation
-      security:
-        - main_auth:
-          - 'read:users' # for auth2 provide list of scopes here
-        - api_key: []
-      # overwriting default global produces
+      - name: username
+        in: path
+        description: The name that needs to be fetched
+        required: true
+        type: string
+      - name: with_email
+        in: query
+        description: Filter users without email
+        type: boolean
       produces:
-        - application/json
-      responses: # list of responses
+      - application/json
+      responses:
         '200':
           description: Success
-          schema: # response schema can be specified for each response
-            $ref: '#/definitions/User'
+          schema:
+            "$ref": "#/definitions/User"
           examples:
-          # repsonse samples for each type operation produces
             application/json:
               username: user1
               email: user@example.com
@@ -148,31 +136,26 @@ paths:
           description: Forbidden
         '404':
           description: User not found
-    # documentation for PUT operation for this path
     put:
       tags:
-        - User
+      - User
       summary: Updated user
       description: This can only be done by the logged in user.
       operationId: updateUser
       produces:
-        - application/json
+      - application/json
       parameters:
-        - name: username
-          in: path
-          description: The name that needs to be updated
-          required: true
-          type: string
-        - in: body
-          name: body
-          description: Updated user object
-          required: true
-          # for body parameter you should specify request schema instead of type
-          schema:
-            $ref: '#/definitions/User'
-      security:
-        - main_auth:
-          - 'write:users'
+      - name: username
+        in: path
+        description: The name that needs to be updated
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Updated user object
+        required: true
+        schema:
+          "$ref": "#/definitions/User"
       responses:
         '200':
           description: OK
@@ -180,43 +163,37 @@ paths:
           description: Invalid user supplied
         '404':
           description: User not found
-  
-  '/echo':
+  "/echo":
     post:
       tags:
-        - Echo
+      - Echo
       summary: Echo test
       description: Receive the exact message you've sent
       operationId: echo
       parameters:
-        - name: message
-          in: body
-          description: 'Echo payload'
-          required: true
-          schema:
-            type: string
-            example: 'Hello world!'
-      security:
-        - api_key: []
+      - name: message
+        in: body
+        description: Echo payload
+        required: true
+        schema:
+          type: string
+          example: Hello world!
       responses:
         '200':
-          description: 'OK'
+          description: OK
           examples:
-            'application/json': 'Hello world!'
+            application/json: Hello world!
           schema:
             type: string
-          # docuemnt headers for this repsonse
           headers:
-            X-Rate-Limit: # Header name
-              type: integer # Header value type
-              format: int32 # Header value format
+            X-Rate-Limit:
+              type: integer
+              format: int32
               description: calls per hour allowed by the user
             X-Expires-After:
               type: string
               format: date-time
               description: date in UTC when token expires
-# An object to hold data types that can be consumed and produced by operations.
-# These data types can be primitives, arrays or models.
 definitions:
   Email:
     description: User email address
@@ -242,4 +219,33 @@ definitions:
         minLength: 1
         example: Smith
       email:
-        $ref: '#/definitions/Email'
+        "$ref": "#/definitions/Email"
+  BodyRead:
+    type: object
+    required:
+    - action
+    - version
+    - token
+    properties:
+      action:
+        description: read  &nbsp;&nbsp;->&nbsp;&nbsp; (Action to Read)
+        type: string
+        example: read
+      version:
+        description: 1.0  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)
+        type: string
+        example: '1.0'
+      token:
+        description: Token of the environment
+        type: string
+        example: Tzc9amhGTH2cHvmao1t2
+      ref:
+        description: Reference Table
+        type: string
+        example: Sellers
+        x-nullable: true
+      key:
+        description: Key of the Value
+        type: string
+        example: '00001'
+        x-nullable: true
