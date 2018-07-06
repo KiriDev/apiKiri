@@ -1,0 +1,337 @@
+{
+  "swagger": "2.0",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "host": "us-central1-db-kiri.cloudfunctions.net",
+  "basePath": "",
+  "info": {
+    "description": "This is an API for direct connection and data synchronization.\n# Introduction\nThis API allows you to Read, Write, Modify and Delete information from your clients and \nthus create a link between our systems.\n\n# API Specification\nThe goal of the API Specification is to define a standard, language-agnostic interface which allows both humans\nand computers to discover and understand the capabilities of the service without access to source code,\ndocumentation, or through network traffic inspection. A consumer can understand and interact with the remote service with\na minimal amount of implementation logic. Similar to what interfaces have done for lower-level programming,\nthis API removes the guesswork in calling the service.",
+    "version": "1.0",
+    "title": "Doc for Kiri Api",
+    "termsOfService": "https://kiri.mobi/web/politicadeprivacidad.html",
+    "contact": {
+      "email": "dev@kiri.mobi",
+      "url": "https://kiri.mobi"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-logo": {
+      "url": "https://firebasestorage.googleapis.com/v0/b/db-kiri.appspot.com/o/public%2Flogo%2Fkiri.png?alt=media&token=c98d1731-00ac-404b-99de-d8ac1b06d067"
+    }
+  },
+  "produces": [
+    "application/json",
+    "application/xml",
+    "text/csv"
+  ],
+  "consumes": [
+    "application/json",
+    "application/xml"
+  ],
+  "tags": [
+    {
+      "name": "Read",
+      "description": "Example Read operations"
+    },
+    {
+      "name": "Echo",
+      "description": "Example echo operations"
+    },
+    {
+      "name": "User",
+      "description": "Operations about user"
+    }
+  ],
+  "paths": {
+    "/transaction/": {
+      "parameters": [
+      ],
+      "post": {
+        "tags": [
+          "Read"
+        ],
+        "summary": "Get information from the database",
+        "description": "Using the `action` parameter in read, you can get the information from the database.\nIt is possible to specify the reference table `ref` and the key of the value `key` in the search.",
+        "operationId": "readDB",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "application/json",
+            "required": true,
+            "type": "string",
+            "x-example": "Content-Type:application/json"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Read specific data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BodyRead"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "name": "hernan bruno",
+                "profileImage": "https://URL/profile-4.jpg",
+                "code": "00001",
+                "password": "00001",
+                "id": "30400500"
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "Error": "Token Incorrecto",
+                "Request": {
+                  "action": "read",
+                  "version": "1.0",
+                  "token": "Non-existent-Token",
+                  "ref": "Sellers",
+                  "key": "00001"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "Error": "Valores Incorrectos",
+                "Request": {
+                  "action": "Invalid action or",
+                  "version": "Invalid version or",
+                  "token": "Tzc9amhGTH2cHvmao1t2",
+                  "ref": "Invalid Ref or",
+                  "key": "Invalid Key"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{username}": {
+      "parameters": [
+        {
+          "name": "pretty_print",
+          "in": "query",
+          "description": "Pretty print response",
+          "type": "boolean"
+        }
+      ],
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get user by user name",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "getUserByName",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The name that needs to be fetched",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "with_email",
+            "in": "query",
+            "description": "Filter users without email",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "examples": {
+              "application/json": {
+                "username": "user1",
+                "email": "user@example.com"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Updated user",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "updateUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The name that needs to be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Invalid user supplied"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/echo": {
+      "post": {
+        "tags": [
+          "Echo"
+        ],
+        "summary": "Echo test",
+        "description": "Receive the exact message you've sent",
+        "operationId": "echo",
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "description": "Echo payload",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Hello world!"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "examples": {
+              "application/json": "Hello world!"
+            },
+            "schema": {
+              "type": "string"
+            },
+            "headers": {
+              "X-Rate-Limit": {
+                "type": "integer",
+                "format": "int32",
+                "description": "calls per hour allowed by the user"
+              },
+              "X-Expires-After": {
+                "type": "string",
+                "format": "date-time",
+                "description": "date in UTC when token expires"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Email": {
+      "description": "User email address",
+      "type": "string",
+      "format": "email",
+      "example": "john.smith@example.com"
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "description": "User supplied username",
+          "type": "string",
+          "minLength": 4,
+          "example": "John78"
+        },
+        "firstName": {
+          "description": "User first name",
+          "type": "string",
+          "minLength": 1,
+          "example": "John"
+        },
+        "lastName": {
+          "description": "User last name",
+          "type": "string",
+          "minLength": 1,
+          "example": "Smith"
+        },
+        "email": {
+          "$ref": "#/definitions/Email"
+        }
+      }
+    },
+    "BodyRead": {
+      "type": "object",
+      "required":["action","version","token"],
+      "properties": {
+        "action": {
+          "description": "read  &nbsp;&nbsp;->&nbsp;&nbsp; (Action to Read)",
+          "type": "string",
+          "example": "read"
+        },
+        "version": {
+          "description": "1.0  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)",
+          "type": "string",
+          "example": "1.0"
+        },
+        "token": {
+          "description": "Token of the environment",
+          "type": "string",
+          "example": "Tzc9amhGTH2cHvmao1t2"
+        },
+        "ref": {
+          "description": "Reference Table",
+          "type": "string",
+          "example": "Sellers",
+          "x-nullable": true
+        },
+        "key": {
+          "description": "Key of the Value",
+          "type": "string",
+          "example": "00001",
+          "x-nullable": true
+        }
+      }
+    }
+  }
+}
