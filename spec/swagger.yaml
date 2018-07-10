@@ -17,7 +17,7 @@ info:
     done for lower-level programming,\nthis API removes the guesswork in calling the
     service."
   version: '1.0'
-  title: Doc for Kiri Api
+  title: Docs for Kiri Api
   termsOfService: https://kiri.mobi/web/politicadeprivacidad.html
   contact:
     email: dev@kiri.mobi
@@ -37,19 +37,891 @@ consumes:
 tags:
 - name: Read
   description: Example Read operations
-- name: Echo
-  description: Example echo operations
-- name: User
-  description: Operations about user
+- name: Set
+  description: Example Set operations
+- name: Update
+  description: Example Update operations
+- name: Delete
+  description: Example Delete operations
+- name: Duty Struct
+  description: |
+        ## DUTY
+
+        ```json
+        {
+            "apiSalesClients": {
+                "00001": { // client key
+                    "client": "string", // client key
+                    "email": "string",
+                    "password": "string",
+                    "setPass": 0 // number 0 | 1   *default 0
+                }
+            },
+            "apiSalesNewClients": {
+                "Yyxxes1PqR4T8sRock8X": { // client key
+                    "address": "string",
+                    "businessName": "string",
+                    "clientName": "string",
+                    "email": "string",
+                    "locality": "string",
+                    "phone": "string",
+                    "state": "string",
+                    "vatCondition": "string"
+                }
+            },
+            "articles": {
+                "L12do7ZoaLn8KDmmE5uz": { // article key
+                    "image": "string", // url
+                    "name": "string",
+                    "netCost": 100, // number
+                    "unitOfMeasurement": {
+                        "00001": {
+                            "equivalence": 1, // number *default 1
+                            "name": "string"
+                        }
+                    }
+                }
+            },
+            "banks": {
+                "9VqhmuBObmgBTKkznAt": {
+                    "code": "string",
+                    "name": "string"
+                }
+            },
+            "clients": {
+                "00001": { // client key
+                    "address": {
+                        "00001": {
+                            "address": "string",
+                            "country": "string",
+                            "description": "string", // example: "work"
+                            "neighborhood": "string",
+                            "state": "string",
+                            "zip": "string"
+                        }
+                    },
+                    "email": {
+                        "00001": {
+                            "description": "string", // example: "work"
+                            "email": "string"
+                        }
+                    },
+                    "fiscal": {
+                        "cuil": "string",
+                        "vat": "string" // vat key
+                    },
+                    "id": "string", // client key
+                    "name": "string",
+                    "phone": {
+                        "00001": {
+                            "description": "string",
+                            "phone": "string"
+                        }
+                    },
+                    "pricelist": "string", // pricelist key
+                    "saleCondition": "string", // sale condition key
+                    "sellers": {
+                        "00001": true // seller key * bool true | false
+                    }
+                }
+            },
+            "collections": {
+                "VRfZ4okA0xQAZ3oE5GKj": {
+                    "client": {
+                        "address": {
+                            "00001": {
+                                "address": "string",
+                                "country": "string",
+                                "description": "string",
+                                "neighborhood": "string",
+                                "state": "string",
+                                "zip": "string",
+                            },
+                        },
+                        "email": {
+                            "00001": {
+                                "description": "string",
+                                "email": "string",
+                            },
+                        },
+                        "fiscal": {
+                            "cuil": "string",
+                            "iva": "string",
+                        },
+                        "id": "string",
+                        "name": "string",
+                        "phone": {
+                            "00001": {
+                                "description": "string",
+                                "phone": "string",
+                            },
+                        },
+                        "pricelist": "string",
+                        "saleCondition": "string",
+                        "sellers": {
+                            "00001": "boolean",
+                        }
+                    },
+                    "imputedDocuments": {
+                        "1GxFloYeHzVMNXxyVtEM": {
+                            "client": "string",
+                            "detail": {
+                                "00001": {
+                                    "amount": "number",
+                                    "id": "string",
+                                    "name": "string",
+                                    "quantity": "number",
+                                },
+                            },
+                            "document": {
+                                "code": "string",
+                                "currentPayment": "number",
+                                "date": "number",
+                                "dueDate": "number",
+                                "initialAmount": "number",
+                                "number": "string",
+                                "paidAmount": "number",
+                                "paydAmount": "number",
+                                "pos": "string",
+                                "quotaNumber": "number",
+                                "type": "string",
+                            },
+                            "id": "string",
+                        },
+                    },
+                    "license": "string",
+                    "position": {
+                        "coords": {
+                            "latitude": "string",
+                            "longitude": "string"
+                        },
+                        "mocked": "boolean"
+                    },
+                    "payments": {
+                        "56vVH3Qeg7ixH7bajFO4": {
+                            "amount": "number",
+                            "id": "string",
+                            "method": "number",
+                            "time": "number",
+                        },
+                    },
+                    "seller": "string",
+                    "state": "number",
+                    "time": "number",
+                    "totalAmount": "number",
+                }
+            },
+            "currentAccount": {
+                "1GxFloYeHzVMNXxyVtEM": {
+                    "client": {
+                        "id": "string",
+                        "name": "string",
+                    },
+                    "detail": {
+                        "00001": {
+                            "amount": "number",
+                            "id": "string",
+                            "name": "string",
+                            "quantity": "number",
+                        },
+                    },
+                    "document": {
+                        "code": "string",
+                        "date": "number",
+                        "dueDate": "number",
+                        "initialAmount": "number",
+                        "number": "string",
+                        "paidAmount": "number",
+                        "paydAmount": "number",
+                        "pos": "string",
+                        "quotaNumber": "number",
+                        "type": "string",
+                    },
+                    "id": "string",
+                }
+            },
+            "groupers": {
+                "Uiw2pQUS3gU8XTieMVna": {
+                    "articles": {
+                        "QU63Lm6CaMspN0qXEuVR": {
+                            "order": "number",
+                        },
+                    },
+                    "groupers": {
+                        //... repeat structure
+                    },
+                    "name": "string",
+                    "image": "string"
+                }
+            },
+            "iva": {
+                "001": {
+                    "name": "string"
+                }
+            },
+            "internalOrders": {
+                "sBzIu8La6HBOhjMQ1ySR": {
+                    "client": {
+                        "id": "string",
+                        "name": "string",
+                    },
+                    "finished": "boolean",
+                    "timeStart": "number",
+                    "timeEnd": "number",
+                    "state": "number",
+                    "origin": "number",
+                    "order": {
+                        "dTjnqBSYWqIIJlyRosNo": {
+                            "id": "sting", // example dTjnqBSYWqIIJlyRosNo
+                            "name": "string",
+                            "quantity": "number",
+                        }
+                    }
+                },
+            },
+            "news": {
+                "TtQ6O940SuaONNLpY1Hw": {
+                    "description": "string",
+                    "destination": "number",
+                    "image": "string",
+                    "time": "number",
+                    "title": "string",
+                }
+            },
+            "notBuy": {
+                "MY4Md2hxTnhZDjz4Fg0f": {
+                    "client": {
+                        "address": {
+                            "00001": {
+                                "address": "string",
+                                "country": "string",
+                                "description": "string",
+                                "neighborhood": "string",
+                                "state": "string",
+                                "zip": "string",
+                            },
+                        },
+                        "email": {
+                            "00001": {
+                                "description": "string",
+                                "email": "string",
+                            },
+                        },
+                        "fiscal": {
+                            "cuil": "string",
+                            "iva": "string",
+                        },
+                        "id": "string",
+                        "name": "string",
+                        "phone": {
+                            "00001": {
+                                "description": "string",
+                                "phone": "string",
+                            },
+                        },
+                        "pricelist": "string",
+                        "saleCondition": "string",
+                        "sellers": {
+                            "00001": "boolean",
+                        }
+                    },
+                    "license": "string",
+                    "position": {
+                        "coords": {
+                            "latitude": "string",
+                            "longitude": "string"
+                        },
+                        "mocked": "boolean"
+                    },
+                    "reason": {
+                        "key": "string",
+                        "name": "string"
+                    },
+                    "seller": "string",
+                    "time": "number"
+                }
+            },
+            "orders": {
+                "sBzIu8La6HBOhjMQ1ySR": {
+                    "client": {
+                        "address": {
+                            "00001": {
+                                "address": "string",
+                                "country": "string",
+                                "description": "string",
+                                "neighborhood": "string",
+                                "state": "string",
+                                "zip": "string",
+                            },
+                        },
+                        "email": {
+                            "00001": {
+                                "description": "string",
+                                "email": "string",
+                            },
+                        },
+                        "fiscal": {
+                            "cuil": "string",
+                            "iva": "string",
+                        },
+                        "id": "string",
+                        "name": "string",
+                        "phone": {
+                            "00001": {
+                                "description": "string",
+                                "phone": "string",
+                            },
+                        },
+                        "pricelist": "string",
+                        "saleCondition": "string",
+                        "sellers": {
+                            "00001": "boolean",
+                        }
+                    },
+                    "license": "string",
+                    "position": {
+                        "coords": {
+                            "latitude": "string",
+                            "longitude": "string"
+                        },
+                        "mocked": "boolean"
+                    },
+                    "finished": "boolean",
+                    "globalBonus": {
+                        "fixed": "boolean",
+                        "amount": "number"
+                    },
+                    "total": "number",
+                    "timeStart": "number",
+                    "timeEnd": "number",
+                    "state": "number",
+                    "seller": "string",
+                    "saleCondition": "string",
+                    "origin": "number",
+                    "company": "string",
+                    "order": {
+                        "dTjnqBSYWqIIJlyRosNo": {
+                            "discount": "number",
+                            "extras": {
+                                "00001": {
+                                    "amount": "number",
+                                    "fixed": "boolean",
+                                    "priority": "number",
+                                    "surcharge": "boolean",
+                                    "discount": "boolean",
+                                }
+                            },
+                            "id": "sting",
+                            "name": "string",
+                            "netCost": "number",
+                            "priceListData": {
+                                "key": "string",
+                                "taxes": {
+                                    "00001": {
+                                        "amount": "number",
+                                        "fixed": "boolean",
+                                    }
+                                }
+                            },
+                            "quantity": "number",
+                            "ref": "string", // example dTjnqBSYWqIIJlyRosNo
+                            "subtotal": "number",
+                            "total": "number"
+                        }
+                    }
+                },
+            },
+            "priceList": {
+                "ZYV06DpEFIAwBFY6kYKL": {
+                    "articles": {
+                        "L12do7ZoaLn8KDmmE5uz": { // it must be the key to a article
+                            "forcedPrice": {
+                                "amount": "number",
+                                "forced": "boolean",
+                            },
+                            "key": "L12do7ZoaLn8KDmmE5uz"
+                        }
+                    }
+                }
+            },
+            "reasonsNotBuy": {
+                "89n6Tewj2gDp3f3Gpghi": {
+                    "name": "string"
+                }
+            },
+            "routes": {
+                "clientList": {
+                    "00001": { // it must be the key to a client
+                        "order": "number"
+                    }
+                },
+                "day": {
+                    "0": "boolean" // day number 0:Sunday, 6:Saturday
+                },
+                "name": "string",
+                "sellers": {
+                    "00001": "boolean" // it must be the key to a seller
+                },
+            },
+            "salesCondition": {
+                "SmEzpw5WdjQNWXUOHUJn": {
+                    "bonus":  "string",
+
+                    "description": "string",
+
+                    "moneyCode":  "string",
+
+                    "name": "string",
+                    "observation": "string",
+
+                    "surcharge":  "string",
+                }
+            },
+            "sellers":{
+                "00001":{
+                    "code":"string",
+                    "id":"string",
+                    "name":"string",
+                    "password":"string",
+                    "profileImage":"string"
+                }
+            }
+        }
+        ```
+- name: Conquer Struct
+  description: |
+        ## CONQUER
+
+        ```json
+        {
+            "apiSalesClients": {
+                "00001": { // client key
+                    "client": "string", // client key
+                    "email": "string",
+                    "password": "string",
+                    "setPass": 0 // number 0 | 1   *default 0
+                }
+            },
+            "apiSalesNewClients": {
+                "Yyxxes1PqR4T8sRock8X": { // client key
+                    "address": "string",
+                    "businessName": "string",
+                    "clientName": "string",
+                    "email": "string",
+                    "locality": "string",
+                    "phone": "string",
+                    "state": "string",
+                    "vatCondition": "string"
+                }
+            },
+            "articles": {
+                "L12do7ZoaLn8KDmmE5uz": { // article key
+                    "image": "string", // url
+                    "name": "string",
+                    "netCost": 100, // number
+                    "unitOfMeasurement": {
+                        "00001": {
+                            "equivalence": 1, // number *default 1
+                            "name": "string"
+                        }
+                    }
+                }
+            },
+            "banks": {
+                "9VqhmuBObmgBTKkznAt": {
+                    "code": "string",
+                    "name": "string"
+                }
+            },
+            "clients": {
+                "00001": { // client key
+                    "address": {
+                        "00001": {
+                            "address": "string",
+                            "country": "string",
+                            "description": "string", // example: "work"
+                            "neighborhood": "string",
+                            "state": "string",
+                            "zip": "string"
+                        }
+                    },
+                    "email": {
+                        "00001": {
+                            "description": "string", // example: "work"
+                            "email": "string"
+                        }
+                    },
+                    "fiscal": {
+                        "cuil": "string",
+                        "vat": "string" // vat key
+                    },
+                    "id": "string", // client key
+                    "name": "string",
+                    "phone": {
+                        "00001": {
+                            "description": "string",
+                            "phone": "string"
+                        }
+                    },
+                    "pricelist": "string", // pricelist key
+                    "saleCondition": "string", // sale condition key
+                    "sellers": {
+                        "00001": true // seller key * bool true | false
+                    }
+                }
+            },
+            "collections": {
+                "VRfZ4okA0xQAZ3oE5GKj": {
+                    "client": {
+                        "address": {
+                            "00001": {
+                                "address": "string",
+                                "country": "string",
+                                "description": "string",
+                                "neighborhood": "string",
+                                "state": "string",
+                                "zip": "string",
+                            },
+                        },
+                        "email": {
+                            "00001": {
+                                "description": "string",
+                                "email": "string",
+                            },
+                        },
+                        "fiscal": {
+                            "cuil": "string",
+                            "iva": "string",
+                        },
+                        "id": "string",
+                        "name": "string",
+                        "phone": {
+                            "00001": {
+                                "description": "string",
+                                "phone": "string",
+                            },
+                        },
+                        "pricelist": "string",
+                        "saleCondition": "string",
+                        "sellers": {
+                            "00001": "boolean",
+                        }
+                    },
+                    "imputedDocuments": {
+                        "1GxFloYeHzVMNXxyVtEM": {
+                            "client": "string",
+                            "detail": {
+                                "00001": {
+                                    "amount": "number",
+                                    "id": "string",
+                                    "name": "string",
+                                    "quantity": "number",
+                                },
+                            },
+                            "document": {
+                                "code": "string",
+                                "currentPayment": "number",
+                                "date": "number",
+                                "dueDate": "number",
+                                "initialAmount": "number",
+                                "number": "string",
+                                "paidAmount": "number",
+                                "paydAmount": "number",
+                                "pos": "string",
+                                "quotaNumber": "number",
+                                "type": "string",
+                            },
+                            "id": "string",
+                        },
+                    },
+                    "license": "string",
+                    "position": {
+                        "coords": {
+                            "latitude": "string",
+                            "longitude": "string"
+                        },
+                        "mocked": "boolean"
+                    },
+                    "payments": {
+                        "56vVH3Qeg7ixH7bajFO4": {
+                            "amount": "number",
+                            "id": "string",
+                            "method": "number",
+                            "time": "number",
+                        },
+                    },
+                    "seller": "string",
+                    "state": "number",
+                    "time": "number",
+                    "totalAmount": "number",
+                }
+            },
+            "currentAccount": {
+                "1GxFloYeHzVMNXxyVtEM": {
+                    "client": {
+                        "id": "string",
+                        "name": "string",
+                    },
+                    "detail": {
+                        "00001": {
+                            "amount": "number",
+                            "id": "string",
+                            "name": "string",
+                            "quantity": "number",
+                        },
+                    },
+                    "document": {
+                        "code": "string",
+                        "date": "number",
+                        "dueDate": "number",
+                        "initialAmount": "number",
+                        "number": "string",
+                        "paidAmount": "number",
+                        "paydAmount": "number",
+                        "pos": "string",
+                        "quotaNumber": "number",
+                        "type": "string",
+                    },
+                    "id": "string",
+                }
+            },
+            "groupers": {
+                "Uiw2pQUS3gU8XTieMVna": {
+                    "articles": {
+                        "QU63Lm6CaMspN0qXEuVR": {
+                            "order": "number",
+                        },
+                    },
+                    "groupers": {
+                        //... repeat structure
+                    },
+                    "name": "string",
+                    "image": "string"
+                }
+            },
+            "iva": {
+                "001": {
+                    "name": "string"
+                }
+            },
+            "news": {
+                "TtQ6O940SuaONNLpY1Hw": {
+                    "description": "string",
+                    "destination": "number",
+                    "image": "string",
+                    "time": "number",
+                    "title": "string",
+                }
+            },
+            "notBuy": {
+                "MY4Md2hxTnhZDjz4Fg0f": {
+                    "client": {
+                        "address": {
+                            "00001": {
+                                "address": "string",
+                                "country": "string",
+                                "description": "string",
+                                "neighborhood": "string",
+                                "state": "string",
+                                "zip": "string",
+                            },
+                        },
+                        "email": {
+                            "00001": {
+                                "description": "string",
+                                "email": "string",
+                            },
+                        },
+                        "fiscal": {
+                            "cuil": "string",
+                            "iva": "string",
+                        },
+                        "id": "string",
+                        "name": "string",
+                        "phone": {
+                            "00001": {
+                                "description": "string",
+                                "phone": "string",
+                            },
+                        },
+                        "pricelist": "string",
+                        "saleCondition": "string",
+                        "sellers": {
+                            "00001": "boolean",
+                        }
+                    },
+                    "license": "string",
+                    "position": {
+                        "coords": {
+                            "latitude": "string",
+                            "longitude": "string"
+                        },
+                        "mocked": "boolean"
+                    },
+                    "reason": {
+                        "key": "string",
+                        "name": "string"
+                    },
+                    "seller": "string",
+                    "time": "number"
+                }
+            },
+            "orders": {
+                "sBzIu8La6HBOhjMQ1ySR": {
+                    "client": {
+                        "address": {
+                            "00001": {
+                                "address": "string",
+                                "country": "string",
+                                "description": "string",
+                                "neighborhood": "string",
+                                "state": "string",
+                                "zip": "string",
+                            },
+                        },
+                        "email": {
+                            "00001": {
+                                "description": "string",
+                                "email": "string",
+                            },
+                        },
+                        "fiscal": {
+                            "cuil": "string",
+                            "iva": "string",
+                        },
+                        "id": "string",
+                        "name": "string",
+                        "phone": {
+                            "00001": {
+                                "description": "string",
+                                "phone": "string",
+                            },
+                        },
+                        "pricelist": "string",
+                        "saleCondition": "string",
+                        "sellers": {
+                            "00001": "boolean",
+                        }
+                    },
+                    "license": "string",
+                    "position": {
+                        "coords": {
+                            "latitude": "string",
+                            "longitude": "string"
+                        },
+                        "mocked": "boolean"
+                    },
+                    "finished": "boolean",
+                    "globalBonus": {
+                        "fixed": "boolean",
+                        "amount": "number"
+                    },
+                    "total": "number",
+                    "timeStart": "number",
+                    "timeEnd": "number",
+                    "state": "number",
+                    "seller": "string",
+                    "saleCondition": "string",
+                    "origin": "number",
+                    "company": "string",
+                    "order": {
+                        "dTjnqBSYWqIIJlyRosNo": {
+                            "discount": "number",
+                            "extras": {
+                                "00001": {
+                                    "amount": "number",
+                                    "fixed": "boolean",
+                                    "priority": "number",
+                                    "surcharge": "boolean",
+                                    "discount": "boolean",
+                                }
+                            },
+                            "id": "sting",
+                            "name": "string",
+                            "netCost": "number",
+                            "priceListData": {
+                                "key": "string",
+                                "taxes": {
+                                    "00001": {
+                                        "amount": "number",
+                                        "fixed": "boolean",
+                                    }
+                                }
+                            },
+                            "quantity": "number",
+                            "ref": "string", // example dTjnqBSYWqIIJlyRosNo
+                            "subtotal": "number",
+                            "total": "number"
+                        }
+                    }
+                },
+            },
+            "priceList": {
+                "ZYV06DpEFIAwBFY6kYKL": {
+                    "articles": {
+                        "L12do7ZoaLn8KDmmE5uz": { // it must be the key to a article
+                            "forcedPrice": {
+                                "amount": "number",
+                                "forced": "boolean",
+                            },
+                            "key": "L12do7ZoaLn8KDmmE5uz"
+                        }
+                    }
+                }
+            },
+            "reasonsNotBuy": {
+                "89n6Tewj2gDp3f3Gpghi": {
+                    "name": "string"
+                }
+            },
+            "routes": {
+                "clientList": {
+                    "00001": { // it must be the key to a client
+                        "order": "number"
+                    }
+                },
+                "day": {
+                    "0": "boolean" // day number 0:Sunday, 6:Saturday
+                },
+                "name": "string",
+                "sellers": {
+                    "00001": "boolean" // it must be the key to a seller
+                },
+            },
+            "salesCondition": {
+                "SmEzpw5WdjQNWXUOHUJn": {
+                    "bonus":  "string",
+
+                    "description": "string",
+
+                    "moneyCode":  "string",
+
+                    "name": "string",
+                    "observation": "string",
+
+                    "surcharge":  "string",
+                }
+            },
+            "sellers":{
+                "00001":{
+                    "code":"string",
+                    "id":"string",
+                    "name":"string",
+                    "password":"string",
+                    "profileImage":"string"
+                }
+            }
+        }
+        ```
 paths:
   "/transaction/":
     parameters: []
     post:
       tags:
       - Read
-      summary: Get information from the database
+      summary: Get information from database
       description: |-
-        Using the `action` parameter in read, you can get the information from the database.
+        Using the `action` parameter in read, you can get information from database.
         It is possible to specify the reference table `ref` and the key of the value `key` in the search.
       operationId: readDB
       parameters:
@@ -81,7 +953,7 @@ paths:
           description: ''
           examples:
             application/json:
-              Error: Valores Incorrectos
+              Error: Invalid Values
               Request:
                 action: Invalid action or
                 version: Invalid version or
@@ -92,134 +964,245 @@ paths:
           description: ''
           examples:
             application/json:
-              Error: Token Incorrecto
+              Error: Invalid Token
               Request:
                 action: read
                 version: '1.0'
                 token: Non-existent-Token
-                ref: Sellers
+                ref: sellers
                 key: '00001'
-  "/users/{username}":
-    parameters:
-    - name: pretty_print
-      in: query
-      description: Pretty print response
-      type: boolean
-    get:
-      tags:
-      - User
-      summary: Get user by user name
-      description: "Some description of the operation. \nYou can use `markdown` here.\n"
-      operationId: getUserByName
-      parameters:
-      - name: username
-        in: path
-        description: The name that needs to be fetched
-        required: true
-        type: string
-      - name: with_email
-        in: query
-        description: Filter users without email
-        type: boolean
-      produces:
-      - application/json
-      responses:
-        '200':
-          description: Success
-          schema:
-            "$ref": "#/definitions/User"
-          examples:
-            application/json:
-              username: user1
-              email: user@example.com
-        '403':
-          description: Forbidden
-        '404':
-          description: User not found
-    put:
-      tags:
-      - User
-      summary: Updated user
-      description: This can only be done by the logged in user.
-      operationId: updateUser
-      produces:
-      - application/json
-      parameters:
-      - name: username
-        in: path
-        description: The name that needs to be updated
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: Updated user object
-        required: true
-        schema:
-          "$ref": "#/definitions/User"
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Invalid user supplied
-        '404':
-          description: User not found
-  "/echo":
+  "/transaction":
+    parameters: []
     post:
       tags:
-      - Echo
-      summary: Echo test
-      description: Receive the exact message you've sent
-      operationId: echo
+      - Set
+      summary: Set information in database
+      description: "Using the `action` parameter in set, you can set information in
+        database.\nIt is necessary to specify the reference table `ref`.\n\nThe information
+        must be established in JSON format in the `data` field. Each new value must
+        be indexed by key.\n\n   ### Accepted Values to be ref \n ```json \n'REF':\n{\n
+        \  'sellers': true,\n   'notBuy': true,\n   'apiSalesNewClients': true,\n
+        \  'routes': true,\n   'collections': true,\n   'groupers': true,\n   'iva':
+        true,\n   'currentAccount': true,\n   'clients': true,\n   'apiSalesClients':
+        true,\n   'banks': true,\n   'reasonsNotBuy': true,\n   'salesCondition':
+        true,\n   'articles': true,\n   'news': true,\n   'orders': true,\n   'priceList':
+        true\n}"
+      operationId: setDB
       parameters:
-      - name: message
-        in: body
-        description: Echo payload
+      - in: header
+        name: Content-Type
+        description: application/json
+        required: true
+        type: string
+        x-example: Content-Type:application/json
+      - in: body
+        name: body
+        description: Set specific data
         required: true
         schema:
-          type: string
-          example: Hello world!
+          "$ref": "#/definitions/BodySet"
+      produces:
+      - application/json
       responses:
         '200':
-          description: OK
+          description: ''
           examples:
-            application/json: Hello world!
-          schema:
-            type: string
-          headers:
-            X-Rate-Limit:
-              type: integer
-              format: int32
-              description: calls per hour allowed by the user
-            X-Expires-After:
-              type: string
-              format: date-time
-              description: date in UTC when token expires
+            application/json:
+              Success: Successfully data!
+        '400':
+          description: ''
+          examples:
+            application/json:
+            - Error: Invalid reference
+              Accepted Values:
+                clients: true
+                apiSalesClients: true
+                banks: true
+                reasonsNotBuy: true
+                salesCondition: true
+                articles: true
+                news: true
+                orders: true
+                priceList: true
+                sellers: true
+                notBuy: true
+                apiSalesNewClients: true
+                routes: true
+                collections: true
+                groupers: true
+                iva: true
+                currentAccount: true
+            - Error: No Data
+              Request:
+                action: set
+                version: '1.0'
+                token: Tzc9amhGTH2cHvmao1t2
+                ref: sellers
+        '403':
+          description: ''
+          examples:
+            application/json:
+              Error: Invalid Token
+              Request:
+                action: set
+                version: '1.0'
+                token: Non-existent-Token
+                ref: sellers
+                key: '00001'
+  "/transaction/#":
+    parameters: []
+    post:
+      tags:
+      - Update
+      summary: Update information in database
+      description: "Using the `action` parameter in update, you can update information
+        in database.\nIt is necessary to specify the reference table `ref`.\n\nThe
+        information must be established in JSON format in the `data` field. Each existing
+        value must be indexed by key.\n\nThe key must necessarily exist.\n\n   ###
+        Accepted Values to be ref \n ```json \n'REF':\n{\n   'sellers': true,\n   'notBuy':
+        true,\n   'apiSalesNewClients': true,\n   'routes': true,\n   'collections':
+        true,\n   'groupers': true,\n   'iva': true,\n   'currentAccount': true,\n
+        \  'clients': true,\n   'apiSalesClients': true,\n   'banks': true,\n   'reasonsNotBuy':
+        true,\n   'salesCondition': true,\n   'articles': true,\n   'news': true,\n
+        \  'orders': true,\n   'priceList': true\n}"
+      operationId: updateDB
+      parameters:
+      - in: header
+        name: Content-Type
+        description: application/json
+        required: true
+        type: string
+        x-example: Content-Type:application/json
+      - in: body
+        name: body
+        description: Update specific data
+        required: true
+        schema:
+          "$ref": "#/definitions/BodySet"
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: ''
+          examples:
+            application/json:
+              Success: Successfully updated data!
+        '400':
+          description: ''
+          examples:
+            application/json:
+            - Error: Invalid reference
+              Accepted Values:
+                clients: true
+                apiSalesClients: true
+                banks: true
+                reasonsNotBuy: true
+                salesCondition: true
+                articles: true
+                news: true
+                orders: true
+                priceList: true
+                sellers: true
+                notBuy: true
+                apiSalesNewClients: true
+                routes: true
+                collections: true
+                groupers: true
+                iva: true
+                currentAccount: true
+            - Error: No Data
+              Request:
+                action: update
+                version: '1.0'
+                token: Tzc9amhGTH2cHvmao1t2
+                ref: sellers
+        '403':
+          description: ''
+          examples:
+            application/json:
+              Error: Invalid Token
+              Request:
+                action: update
+                version: '1.0'
+                token: Non-existent-Token
+                ref: sellers
+                key: '00001'
+  "/transaction/?":
+    parameters: []
+    post:
+      tags:
+      - Delete
+      summary: Delete information from database
+      description: "Using the `action` parameter in delete, you can delete information
+        from database.\n It is possible to specify the reference table `ref` and the
+        key of the value `key` in this operation. \n\nThe key must necessarily exist
+        in database.\n\n"
+      operationId: deleteDB
+      parameters:
+      - in: header
+        name: Content-Type
+        description: application/json
+        required: true
+        type: string
+        x-example: Content-Type:application/json
+      - in: body
+        name: body
+        description: Delete specific data
+        required: true
+        schema:
+          "$ref": "#/definitions/BodyRead"
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: ''
+          examples:
+            application/json:
+              Success: Data deleted successfully!
+        '400':
+          description: ''
+          examples:
+            application/json:
+            - Error: Invalid reference
+              Accepted Values:
+                clients: true
+                apiSalesClients: true
+                banks: true
+                reasonsNotBuy: true
+                salesCondition: true
+                articles: true
+                news: true
+                orders: true
+                priceList: true
+                sellers: true
+                notBuy: true
+                apiSalesNewClients: true
+                routes: true
+                collections: true
+                groupers: true
+                iva: true
+                currentAccount: true
+            - Error: Invalid Values
+              Request:
+                action: delete
+                version: '1.0'
+                token: Tzc9amhGTH2cHvmao1t2
+                ref: sellers
+                key: Non-existent-Key
+        '403':
+          description: ''
+          examples:
+            application/json:
+              Error: Invalid Token
+              Request:
+                action: delete
+                version: '1.0'
+                token: Non-existent-Token
+                ref: sellers
+                key: '00001'
+  "/struct/":
+    parameters: []
 definitions:
-  Email:
-    description: User email address
-    type: string
-    format: email
-    example: john.smith@example.com
-  User:
-    type: object
-    properties:
-      username:
-        description: User supplied username
-        type: string
-        minLength: 4
-        example: John78
-      firstName:
-        description: User first name
-        type: string
-        minLength: 1
-        example: John
-      lastName:
-        description: User last name
-        type: string
-        minLength: 1
-        example: Smith
-      email:
-        "$ref": "#/definitions/Email"
   BodyRead:
     type: object
     required:
@@ -242,10 +1225,51 @@ definitions:
       ref:
         description: Reference Table
         type: string
-        example: Sellers
+        example: sellers
         x-nullable: true
       key:
         description: Key of the Value
         type: string
         example: '00001'
         x-nullable: true
+  BodySet:
+    type: object
+    required:
+    - action
+    - version
+    - token
+    - ref
+    - data
+    properties:
+      action:
+        description: set  &nbsp;&nbsp;->&nbsp;&nbsp; (Action to Set)
+        type: string
+        example: set
+      version:
+        description: 1.0  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)
+        type: string
+        example: '1.0'
+      token:
+        description: Token of the environment
+        type: string
+        example: Tzc9amhGTH2cHvmao1t2
+      ref:
+        description: Reference Table
+        type: string
+        example: sellers
+      data:
+        description: Data to Set
+        type: string
+        example:
+          '00002':
+            name: Luis Alterio
+            profileImage: https://URL/profile-5.jpg
+            code: '00002'
+            password: '00002'
+            id: '30400502'
+          '00007':
+            name: Lucas Archer
+            profileImage: https://URL/profile-6.jpg
+            code: '00007'
+            password: '00007'
+            id: '30400507'
