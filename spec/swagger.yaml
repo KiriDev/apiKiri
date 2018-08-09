@@ -1006,7 +1006,7 @@ tags:
         		"001": {
         			"name": "string"
         		}
-        	}
+        	},
         }
         ```
 paths:
