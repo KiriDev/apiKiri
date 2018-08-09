@@ -15,7 +15,8 @@ info:
     traffic inspection. A consumer can understand and interact with the remote service
     with\na minimal amount of implementation logic. Similar to what interfaces have
     done for lower-level programming,\nthis API removes the guesswork in calling the
-    service."
+    service.
+    \n\n# URL\n https://us-central1-db-kiri.cloudfunctions.net/transaction/"
   version: '1.0'
   title: Docs for Kiri Api
   termsOfService: https://kiri.mobi/web/politicadeprivacidad.html
@@ -494,423 +495,518 @@ tags:
 
         ```json
         {
-            "apiSalesClients": {
-                "00001": { // client key
-                    "client": "string", // client key
-                    "email": "string",
-                    "password": "string",
-                    "setPass": 0 // number 0 | 1   *default 0
-                }
-            },
-            "apiSalesNewClients": {
-                "Yyxxes1PqR4T8sRock8X": { // client key
-                    "address": "string",
-                    "businessName": "string",
-                    "clientName": "string",
-                    "email": "string",
-                    "locality": "string",
-                    "phone": "string",
-                    "state": "string",
-                    "vatCondition": "string"
-                }
-            },
-            "articles": {
-                "L12do7ZoaLn8KDmmE5uz": { // article key
-                    "image": "string", // url
-                    "name": "string",
-                    "netCost": 100, // number
-                    "unitOfMeasurement": {
-                        "00001": {
-                            "equivalence": 1, // number *default 1
-                            "name": "string"
-                        }
-                    }
-                }
-            },
-            "banks": {
-                "9VqhmuBObmgBTKkznAt": {
-                    "code": "string",
-                    "name": "string"
-                }
-            },
-            "clients": {
-                "00001": { // client key
-                    "address": {
-                        "00001": {
-                            "address": "string",
-                            "country": "string",
-                            "description": "string", // example: "work"
-                            "neighborhood": "string",
-                            "state": "string",
-                            "zip": "string"
-                        }
-                    },
-                    "email": {
-                        "00001": {
-                            "description": "string", // example: "work"
-                            "email": "string"
-                        }
-                    },
-                    "fiscal": {
-                        "cuil": "string",
-                        "vat": "string" // vat key
-                    },
-                    "id": "string", // client key
-                    "name": "string",
-                    "phone": {
-                        "00001": {
-                            "description": "string",
-                            "phone": "string"
-                        }
-                    },
-                    "pricelist": "string", // pricelist key
-                    "saleCondition": "string", // sale condition key
-                    "sellers": {
-                        "00001": true // seller key * bool true | false
-                    }
-                }
-            },
-            "collections": {
-                "VRfZ4okA0xQAZ3oE5GKj": {
-                    "client": {
-                        "address": {
-                            "00001": {
-                                "address": "string",
-                                "country": "string",
-                                "description": "string",
-                                "neighborhood": "string",
-                                "state": "string",
-                                "zip": "string",
-                            },
-                        },
-                        "email": {
-                            "00001": {
-                                "description": "string",
-                                "email": "string",
-                            },
-                        },
-                        "fiscal": {
-                            "cuil": "string",
-                            "iva": "string",
-                        },
-                        "id": "string",
-                        "name": "string",
-                        "phone": {
-                            "00001": {
-                                "description": "string",
-                                "phone": "string",
-                            },
-                        },
-                        "pricelist": "string",
-                        "saleCondition": "string",
-                        "sellers": {
-                            "00001": "boolean",
-                        }
-                    },
-                    "imputedDocuments": {
-                        "1GxFloYeHzVMNXxyVtEM": {
-                            "client": "string",
-                            "detail": {
-                                "00001": {
-                                    "amount": "number",
-                                    "id": "string",
-                                    "name": "string",
-                                    "quantity": "number",
-                                },
-                            },
-                            "document": {
-                                "code": "string",
-                                "currentPayment": "number",
-                                "date": "number",
-                                "dueDate": "number",
-                                "initialAmount": "number",
-                                "number": "string",
-                                "paidAmount": "number",
-                                "paydAmount": "number",
-                                "pos": "string",
-                                "quotaNumber": "number",
-                                "type": "string",
-                            },
-                            "id": "string",
-                        },
-                    },
-                    "license": "string",
-                    "position": {
-                        "coords": {
-                            "latitude": "string",
-                            "longitude": "string"
-                        },
-                        "mocked": "boolean"
-                    },
-                    "payments": {
-                        "56vVH3Qeg7ixH7bajFO4": {
-                            "amount": "number",
-                            "id": "string",
-                            "method": "number",
-                            "time": "number",
-                        },
-                    },
-                    "seller": "string",
-                    "state": "number",
-                    "time": "number",
-                    "totalAmount": "number",
-                }
-            },
-            "currentAccount": {
-                "1GxFloYeHzVMNXxyVtEM": {
-                    "client": {
-                        "id": "string",
-                        "name": "string",
-                    },
-                    "detail": {
-                        "00001": {
-                            "amount": "number",
-                            "id": "string",
-                            "name": "string",
-                            "quantity": "number",
-                        },
-                    },
-                    "document": {
-                        "code": "string",
-                        "date": "number",
-                        "dueDate": "number",
-                        "initialAmount": "number",
-                        "number": "string",
-                        "paidAmount": "number",
-                        "paydAmount": "number",
-                        "pos": "string",
-                        "quotaNumber": "number",
-                        "type": "string",
-                    },
-                    "id": "string",
-                }
-            },
-            "groupers": {
-                "Uiw2pQUS3gU8XTieMVna": {
-                    "articles": {
-                        "QU63Lm6CaMspN0qXEuVR": {
-                            "order": "number",
-                        },
-                    },
-                    "groupers": {
-                        //... repeat structure
-                    },
-                    "name": "string",
-                    "image": "string"
-                }
-            },
-            "iva": {
-                "001": {
-                    "name": "string"
-                }
-            },
-            "news": {
-                "TtQ6O940SuaONNLpY1Hw": {
-                    "description": "string",
-                    "destination": "number",
-                    "image": "string",
-                    "time": "number",
-                    "title": "string",
-                }
-            },
-            "notBuy": {
-                "MY4Md2hxTnhZDjz4Fg0f": {
-                    "client": {
-                        "address": {
-                            "00001": {
-                                "address": "string",
-                                "country": "string",
-                                "description": "string",
-                                "neighborhood": "string",
-                                "state": "string",
-                                "zip": "string",
-                            },
-                        },
-                        "email": {
-                            "00001": {
-                                "description": "string",
-                                "email": "string",
-                            },
-                        },
-                        "fiscal": {
-                            "cuil": "string",
-                            "iva": "string",
-                        },
-                        "id": "string",
-                        "name": "string",
-                        "phone": {
-                            "00001": {
-                                "description": "string",
-                                "phone": "string",
-                            },
-                        },
-                        "pricelist": "string",
-                        "saleCondition": "string",
-                        "sellers": {
-                            "00001": "boolean",
-                        }
-                    },
-                    "license": "string",
-                    "position": {
-                        "coords": {
-                            "latitude": "string",
-                            "longitude": "string"
-                        },
-                        "mocked": "boolean"
-                    },
-                    "reason": {
-                        "key": "string",
-                        "name": "string"
-                    },
-                    "seller": "string",
-                    "time": "number"
-                }
-            },
-            "orders": {
-                "sBzIu8La6HBOhjMQ1ySR": {
-                    "client": {
-                        "address": {
-                            "00001": {
-                                "address": "string",
-                                "country": "string",
-                                "description": "string",
-                                "neighborhood": "string",
-                                "state": "string",
-                                "zip": "string",
-                            },
-                        },
-                        "email": {
-                            "00001": {
-                                "description": "string",
-                                "email": "string",
-                            },
-                        },
-                        "fiscal": {
-                            "cuil": "string",
-                            "iva": "string",
-                        },
-                        "id": "string",
-                        "name": "string",
-                        "phone": {
-                            "00001": {
-                                "description": "string",
-                                "phone": "string",
-                            },
-                        },
-                        "pricelist": "string",
-                        "saleCondition": "string",
-                        "sellers": {
-                            "00001": "boolean",
-                        }
-                    },
-                    "license": "string",
-                    "position": {
-                        "coords": {
-                            "latitude": "string",
-                            "longitude": "string"
-                        },
-                        "mocked": "boolean"
-                    },
-                    "finished": "boolean",
-                    "globalBonus": {
-                        "fixed": "boolean",
-                        "amount": "number"
-                    },
-                    "total": "number",
-                    "timeStart": "number",
-                    "timeEnd": "number",
-                    "state": "number",
-                    "seller": "string",
-                    "saleCondition": "string",
-                    "origin": "number",
-                    "company": "string",
-                    "order": {
-                        "dTjnqBSYWqIIJlyRosNo": {
-                            "discount": "number",
-                            "extras": {
-                                "00001": {
-                                    "amount": "number",
-                                    "fixed": "boolean",
-                                    "priority": "number",
-                                    "surcharge": "boolean",
-                                    "discount": "boolean",
-                                }
-                            },
-                            "id": "sting",
-                            "name": "string",
-                            "netCost": "number",
-                            "priceListData": {
-                                "key": "string",
-                                "taxes": {
-                                    "00001": {
-                                        "amount": "number",
-                                        "fixed": "boolean",
-                                    }
-                                }
-                            },
-                            "quantity": "number",
-                            "ref": "string", // example dTjnqBSYWqIIJlyRosNo
-                            "subtotal": "number",
-                            "total": "number"
-                        }
-                    }
-                },
-            },
-            "priceList": {
-                "ZYV06DpEFIAwBFY6kYKL": {
-                    "articles": {
-                        "L12do7ZoaLn8KDmmE5uz": { // it must be the key to a article
-                            "forcedPrice": {
-                                "amount": "number",
-                                "forced": "boolean",
-                            },
-                            "key": "L12do7ZoaLn8KDmmE5uz"
-                        }
-                    }
-                }
-            },
-            "reasonsNotBuy": {
-                "89n6Tewj2gDp3f3Gpghi": {
-                    "name": "string"
-                }
-            },
-            "routes": {
-                "clientList": {
-                    "00001": { // it must be the key to a client
-                        "order": "number"
-                    }
-                },
-                "day": {
-                    "0": "boolean" // day number 0:Sunday, 6:Saturday
-                },
-                "name": "string",
-                "sellers": {
-                    "00001": "boolean" // it must be the key to a seller
-                },
-            },
-            "salesCondition": {
-                "SmEzpw5WdjQNWXUOHUJn": {
-                    "bonus":  "string",
-
-                    "description": "string",
-
-                    "moneyCode":  "string",
-
-                    "name": "string",
-                    "observation": "string",
-
-                    "surcharge":  "string",
-                }
-            },
-            "sellers":{
-                "00001":{
-                    "code":"string",
-                    "id":"string",
-                    "name":"string",
-                    "password":"string",
-                    "profileImage":"string"
-                }
-            }
+        	"apiSalesClients": {
+        		"00001": { // client key
+        			"client": "string", // client key
+        			"email": "string",
+        			"password": "string",
+        			"setPass": 0 // number 0 | 1 *default 0
+        		}
+        	},
+        	"apiSalesNewClients": {
+        		"Yyxxes1PqR4T8sRock8X": { // client key
+        			"address": "string",
+        			"businessName": "string",
+        			"clientName": "string",
+        			"email": "string",
+        			"locality": "string",
+        			"phone": "string",
+        			"state": "string",
+        			"vatCondition": "string"
+        		}
+        	},
+        	"articles": {
+        		"L12do7ZoaLn8KDmmE5uz": { // article key
+        			"image": "string", // url
+        			"name": "string",
+        			"netCost": 100, // number
+        			"unitOfMeasurement": {
+        				"00001": {
+        					"equivalence": 1, // number *default 1
+        					"name": "string"
+        				}
+        			}
+        		}
+        	},
+        	"articlesSettings": {
+        		"Vf3A4qxoWCHPoYdYjG3J": {
+        			"amount": 10, //number
+        			"discount": true, // bool
+        			"fixed": true, //bool
+        			"name": "string",
+        			"suracharge": false //bool
+        		}
+        	},
+        	"banks": {
+        		"9VqhmuBObmgBTKkznAt": {
+        			"code": "string",
+        			"name": "string"
+        		}
+        	},
+        	"clients": {
+        		"00001": { // client key
+        			"address": {
+        				"00001": {
+        					"address": "string",
+        					"country": "string",
+        					"description": "string", // example: "work"
+        					"neighborhood": "string",
+        					"state": "string",
+        					"zip": "string"
+        				}
+        			},
+        			"email": {
+        				"00001": {
+        					"description": "string", // example: "work"
+        					"email": "string"
+        				}
+        			},
+        			"fiscal": {
+        				"cuil": "string",
+        				"vat": "string" // vat key
+        			},
+        			"id": "string", // client key
+        			"name": "string",
+        			"phone": {
+        				"00001": {
+        					"description": "string",
+        					"phone": "string"
+        				}
+        			},
+        			"pricelist": "string", // pricelist key
+        			"profileImage": "string", // url
+        			"saleCondition": "string", // sale condition key
+        			"sellers": {
+        				"00001": true // seller key * bool true | false
+        			},
+        			"surcharge": {
+        				"WXzdjUjQXwWXOWSNWmENH": {
+        					"amount": 10,
+        					"fixed": true
+        				}
+        			},
+        			"taxes": {
+        				"WXzdjUjQXwWXOWSNWmENH": {
+        					"amount": 10,
+        					"fixed": true
+        				}
+        			}
+        		}
+        	},
+        	"collections": {
+        		"VRfZ4okA0xQAZ3oE5GKj": {
+        			"client": {
+        				"address": {
+        					"00001": {
+        						"address": "string",
+        						"country": "string",
+        						"description": "string",
+        						"neighborhood": "string",
+        						"state": "string",
+        						"zip": "string",
+        					},
+        				},
+        				"email": {
+        					"00001": {
+        						"description": "string",
+        						"email": "string",
+        					},
+        				},
+        				"fiscal": {
+        					"cuil": "string",
+        					"vat": "string",
+        				},
+        				"id": "string",
+        				"name": "string",
+        				"phone": {
+        					"00001": {
+        						"description": "string",
+        						"phone": "string",
+        					},
+        				},
+        				"pricelist": "string",
+        				"saleCondition": "string",
+        				"sellers": {
+        					"00001": "boolean",
+        				}
+        			},
+        			"imputedDocuments": {
+        				"1GxFloYeHzVMNXxyVtEM": {
+        					"client": "string",
+        					"detail": {
+        						"00001": {
+        							"amount": "number",
+        							"id": "string",
+        							"name": "string",
+        							"quantity": "number",
+        						},
+        					},
+        					"document": {
+        						"code": "string",
+        						"currentPayment": "number",
+        						"date": "number",
+        						"dueDate": "number",
+        						"initialAmount": "number",
+        						"number": "string",
+        						"paidAmount": "number",
+        						"paydAmount": "number",
+        						"pos": "string",
+        						"quotaNumber": "number",
+        						"type": "string",
+        					},
+        					"id": "string",
+        				},
+        			},
+        			"license": "string",
+        			"position": {
+        				"coords": {
+        					"latitude": "string",
+        					"longitude": "string"
+        				},
+        				"mocked": "boolean"
+        			},
+        			"payments": {
+        				"56vVH3Qeg7ixH7bajFO4": {
+        					"amount": "number",
+        					"id": "string",
+        					"method": "number",
+        					"time": "number",
+        				},
+        			},
+        			"seller": "string",
+        			"state": "number",
+        			"time": "number",
+        			"receiptNumber": "number",
+        			"totalAmount": "number",
+        		}
+        	},
+        	"companies": {
+        		"00001": {
+        			"name": "string"
+        		}
+        	},
+        	"currentAccount": {
+        		"1GxFloYeHzVMNXxyVtEM": {
+        			"client": {
+        				"id": "string",
+        				"name": "string",
+        			},
+        			"detail": {
+        				"00001": {
+        					"amount": "number",
+        					"id": "string",
+        					"name": "string",
+        					"quantity": "number",
+        				},
+        			},
+        			"document": {
+        				"code": "string",
+        				"date": "number",
+        				"dueDate": "number",
+        				"initialAmount": "number",
+        				"number": "string",
+        				"paidAmount": "number",
+        				"paydAmount": "number",
+        				"pos": "string",
+        				"quotaNumber": "number",
+        				"type": "string",
+        			},
+        			"id": "string",
+        		}
+        	},
+        	"deposits": {
+        		"HttPRGVB7m7Ie8uGJHzX": {
+        			"name": "string"
+        		}
+        	},
+        	"groupers": {
+        		"Uiw2pQUS3gU8XTieMVna": {
+        			"articles": {
+        				"QU63Lm6CaMspN0qXEuVR": {
+        					"order": "number",
+        				},
+        			},
+        			"groupers": {
+        				//... repeat groupers structure
+        			},
+        			"name": "string",
+        			"image": "string"
+        		}
+        	},
+        	"news": {
+        		"TtQ6O940SuaONNLpY1Hw": {
+        			"description": "string",
+        			"destination": {
+        				"2": true
+        			},
+        			"image": "string",
+        			"time": "number",
+        			"title": "string",
+        		}
+        	},
+        	"notBuy": {
+        		"MY4Md2hxTnhZDjz4Fg0f": {
+        			"client": {
+        				"address": {
+        					"00001": {
+        						"address": "string",
+        						"country": "string",
+        						"description": "string",
+        						"neighborhood": "string",
+        						"state": "string",
+        						"zip": "string",
+        					},
+        				},
+        				"email": {
+        					"00001": {
+        						"description": "string",
+        						"email": "string",
+        					},
+        				},
+        				"fiscal": {
+        					"cuil": "string",
+        					"vat": "string",
+        				},
+        				"id": "string",
+        				"name": "string",
+        				"phone": {
+        					"00001": {
+        						"description": "string",
+        						"phone": "string",
+        					},
+        				},
+        				"pricelist": "string",
+        				"saleCondition": "string",
+        				"sellers": {
+        					"00001": "boolean",
+        				}
+        			},
+        			"license": "string",
+        			"position": {
+        				"coords": {
+        					"latitude": "string",
+        					"longitude": "string"
+        				},
+        				"mocked": "boolean"
+        			},
+        			"reason": {
+        				"key": "string",
+        				"name": "string"
+        			},
+        			"seller": "string",
+        			"time": "number"
+        		}
+        	},
+        	"offers": {
+        		"description": "string",
+        		"destination": {
+        			"2": true
+        		},
+        		"image": "string", // Url
+        		"pack": "string", // it must be a key of a pack
+        		"time": "number",
+        		"title": "text"
+        	},
+        	"orders": {
+        		"sBzIu8La6HBOhjMQ1ySR": {
+        			"client": {
+        				"address": {
+        					"00001": {
+        						"address": "string",
+        						"country": "string",
+        						"description": "string",
+        						"neighborhood": "string",
+        						"state": "string",
+        						"zip": "string",
+        					},
+        				},
+        				"email": {
+        					"00001": {
+        						"description": "string",
+        						"email": "string",
+        					},
+        				},
+        				"fiscal": {
+        					"cuil": "string",
+        					"vat": "string",
+        				},
+        				"id": "string",
+        				"name": "string",
+        				"phone": {
+        					"00001": {
+        						"description": "string",
+        						"phone": "string",
+        					},
+        				},
+        				"pricelist": "string",
+        				"saleCondition": "string",
+        				"sellers": {
+        					"00001": "boolean",
+        				}
+        			},
+        			"license": "string",
+        			"position": {
+        				"coords": {
+        					"latitude": "string",
+        					"longitude": "string"
+        				},
+        				"mocked": "boolean"
+        			},
+        			"finished": "boolean",
+        			"globalBonus": {
+        				"fixed": "boolean",
+        				"amount": "number"
+        			},
+        			"totals": {
+        				"totalOrders": "number",
+        				"totalPacks": "number",
+        				"total": "number"
+        			},
+        			"timeStart": "number",
+        			"timeEnd": "number",
+        			"state": "number",
+        			"seller": "string",
+        			"saleCondition": "string",
+        			"origin": "number",
+        			"company": "string",
+        			"observation": "qwe",
+        			"order": {
+        				"dTjnqBSYWqIIJlyRosNo": {
+        					"discount": "number",
+        					"extras": {
+        						"00001": {
+        							"amount": "number",
+        							"fixed": "boolean",
+        							"priority": "number",
+        							"surcharge": "boolean",
+        							"discount": "boolean",
+        						}
+        					},
+        					"id": "sting", // example dTjnqBSYWqIIJlyRosNo
+        					"key": "string",
+        					"name": "string",
+        					"netCost": "number",
+        					"priceListData": {
+        						"key": "string",
+        						"taxes": {
+        							"00001": {
+        								"amount": "number",
+        								"fixed": "boolean",
+        							}
+        						}
+        					},
+        					"quantity": "number",
+        					"ref": "string",
+        					"subtotal": "number",
+        					"total": "number"
+        				}
+        			}
+        		},
+        	},
+        	"packs": {
+        		"ML14VV97ZRhXzvT6F2WT": {
+        			"articles": {
+        				"yndo39xi2": {
+        					"artId": "L12do7ZoaLn8KDmmE5uz",
+        					"quantity": "number",
+        					"discount": {
+        						"amount": "number",
+        						"fixed": true
+        					}
+        				}
+        			},
+        			"forcedPrice": {
+        				"amount": "number",
+        				"forced": "boolean"
+        			},
+        			"discount": {
+        				"amount": "number",
+        				"fixed": false,
+        			},
+        			"name": "string"
+        		}
+        	},
+        	"priceList": {
+        		"ZYV06DpEFIAwBFY6kYKL": {
+        			"articles": {
+        				"L12do7ZoaLn8KDmmE5uz": { // it must be the key to a article
+        					"forcedPrice": {
+        						"amount": "number",
+        						"forced": "boolean",
+        					},
+        					"key": "L12do7ZoaLn8KDmmE5uz"
+        				}
+        			},
+        			"discount": {
+        				"amount": "number",
+        				"fixed": true,
+        			},
+        			"surcharge": {
+        				"amount": "number",
+        				"fixed": true,
+        			}
+        		}
+        	},
+        	"reasonsNotBuy": {
+        		"89n6Tewj2gDp3f3Gpghi": {
+        			"name": "string"
+        		}
+        	},
+        	"routes": {
+        		"clientList": {
+        			"00001": { // it must be the key to a client
+        				"order": "number"
+        			}
+        		},
+        		"day": {
+        			"0": "boolean" // day number 0:Sunday, 6:Saturday
+        		},
+        		"name": "string",
+        		"sellers": {
+        			"00001": "boolean" // it must be the key to a seller
+        		},
+        	},
+        	"salesCondition": {
+        		"SmEzpw5WdjQNWXUOHUJn": {
+        			"bonus": {
+        				"0101": {
+        					"amount": "number",
+        					"fixed": true
+        				}
+        			},
+        			"description": "string",
+        			"moneyCode": "string",
+        			"name": "string",
+        			"observation": "string",
+        			"surcharge": {
+        				"0101": {
+        					"amount": "number",
+        					"fixed": true
+        				}
+        			},
+        		}
+        	},
+        	"sellers": {
+        		"00001": {
+        			"code": "string",
+        			"id": "string",
+        			"name": "string",
+        			"password": "string",
+        			"profileImage": "string"
+        		}
+        	},
+        	"stock": {
+        		"MxGz5dqXAy4PJW6BdRcs": {
+        			"article": "string", //it must be a key of a article
+        			"deposit": "string", // it must be a key of a deposit
+        			"quantity": "number"
+        		}
+        	},
+        	"vat": {
+        		"001": {
+        			"name": "string"
+        		}
+        	}
         }
         ```
 paths:
