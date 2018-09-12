@@ -5,10 +5,10 @@
     "https"
   ],
   "host": "us-central1-db-kiri.cloudfunctions.net",
-  "basePath": "",
+  "basePath": "/",
   "info": {
-    "description": "This is an API for direct connection and data synchronization.\n# Introduction\nThis API allows you to Read, Write, Modify and Delete information from your clients and \nthus create a link between our systems.\n\n# API Specification\nThe goal of the API Specification is to define a standard, language-agnostic interface which allows both humans\nand computers to discover and understand the capabilities of the service without access to source code,\ndocumentation, or through network traffic inspection. A consumer can understand and interact with the remote service with\na minimal amount of implementation logic. Similar to what interfaces have done for lower-level programming,\nthis API removes the guesswork in calling the service.",
-    "version": "1.0",
+    "description": "This is an API for direct connection and data synchronization.\n# Introduction\nThis API allows you to Read, Write, Modify and Delete information from your clients and \nthus create a link between our systems.\n\n# API Specification\nThe goal of the API Specification is to define a standard, language-agnostic interface which allows both humans\nand computers to discover and understand the capabilities of the service without access to source code,\ndocumentation, or through network traffic inspection. A consumer can understand and interact with the remote service with\na minimal amount of implementation logic. Similar to what interfaces have done for lower-level programming,\nthis API removes the guesswork in calling the service. \n\n# URL\n https://us-central1-db-kiri.cloudfunctions.net/transaction/",
+    "version": "1.1",
     "title": "Docs for Kiri Api",
     "termsOfService": "https://kiri.mobi/web/politicadeprivacidad.html",
     "contact": {
@@ -16,8 +16,8 @@
       "url": "https://kiri.mobi"
     },
     "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      "name": "Google Cloud Platform",
+      "url": "https://cloud.google.com/terms/"
     },
     "x-logo": {
       "url": "https://firebasestorage.googleapis.com/v0/b/db-kiri.appspot.com/o/public%2Flogo%2Fkiri.png?alt=media&token=c98d1731-00ac-404b-99de-d8ac1b06d067"
@@ -50,24 +50,23 @@
       "description": "Example Delete operations"
     },
     {
-      "name": "Conquer Struct",
-      "description": "## CONQUER \n ```json \n'REF':\n{\n   'sellers': true,\n   'notBuy': true,\n   'apiSalesNewClients': true,\n   'routes': true,\n   'collections': true,\n   'groupers': true,\n   'iva': true,\n   'currentAccount': true,\n   'clients': true,\n   'apiSalesClients': true,\n   'banks': true,\n   'reasonsNotBuy': true,\n   'salesCondition': true,\n   'articles': true,\n   'news': true,\n   'orders': true,\n   'priceList': true\n}"
+      "name": "Duty Struct",
+      "description": "## DUTY\n\n```json\n{\n    \"apiSalesClients\": {\n        \"00001\": { // client key\n            \"client\": \"string\", // client key\n            \"email\": \"string\",\n            \"password\": \"string\",\n            \"setPass\": 0 // number 0 | 1   *default 0\n        }\n    },\n    \"apiSalesNewClients\": {\n        \"Yyxxes1PqR4T8sRock8X\": { // client key\n            \"address\": \"string\",\n            \"businessName\": \"string\",\n            \"clientName\": \"string\",\n            \"email\": \"string\",\n            \"locality\": \"string\",\n            \"phone\": \"string\",\n            \"state\": \"string\",\n            \"vatCondition\": \"string\"\n        }\n    },\n    \"articles\": {\n        \"L12do7ZoaLn8KDmmE5uz\": { // article key\n            \"image\": \"string\", // url\n            \"name\": \"string\",\n            \"netCost\": 100, // number\n            \"unitOfMeasurement\": {\n                \"00001\": {\n                    \"equals\": 1, // number  *default 1\n                    \"name\": \"string\"\n                }\n            }\n        }\n    },\n    \"articlesSettings\": {\n        \"Vf3A4qxoWCHPoYdYjG3J\": {\n            \"amount\": 10, //number\n            \"discount\": true, // bool\n            \"fixed\": true, //bool\n            \"name\": \"string\",\n            \"suracharge\": false //bool\n        }\n    },\n    \"banks\": {\n        \"9VqhmuBObmgBTKkznAt\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n        }\n    },\n    \"clients\": {\n        \"00001\": { // client key\n            \"address\": {\n                \"00001\": {\n                    \"address\": \"string\",\n                    \"country\": \"string\",\n                    \"description\": \"string\", // example: \"work\"\n                    \"neighborhood\": \"string\",\n                    \"state\": \"string\",\n                    \"zip\": \"string\"\n                }\n            },\n            \"email\": {\n                \"00001\": {\n                    \"description\": \"string\", // example: \"work\"\n                    \"email\": \"string\"\n                }\n            },\n            \"fiscal\": {\n                \"cuil\": \"string\",\n                \"vat\": \"string\" // vat key\n            },\n            \"id\": \"string\", // client key\n            \"name\": \"string\",\n            \"phone\": {\n                \"00001\": {\n                    \"description\": \"string\",\n                    \"phone\": \"string\"\n                }\n            },\n            \"pricelist\": \"string\", // pricelist key\n            \"profileImage\": \"string\", // url\n            \"saleCondition\": \"string\", // sale condition key\n            \"sellers\": {\n                \"00001\": true // seller key * bool true | false\n            },\n            \"surcharge\": {\n                \"WXzdjUjQXwWXOWSNWmENH\": {\n                    \"amount\": 10,\n                    \"fixed\": true\n                }\n            },\n            \"taxes\": {\n                \"WXzdjUjQXwWXOWSNWmENH\": {\n                    \"amount\": 10,\n                    \"fixed\": true\n                }\n            }\n        }\n    },\n    \"collections\": {\n        \"VRfZ4okA0xQAZ3oE5GKj\": {\n            \"client\": {\n                \"fiscal\": {\n                    \"cuil\": \"string\",\n                    \"vat\": \"string\",\n                },\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"pricelist\": \"string\",\n                \"saleCondition\": \"string\",\n            },\n            \"imputedDocuments\": {\n                \"1GxFloYeHzVMNXxyVtEM\": {\n                    \"client\": \"string\",\n                    \"detail\": {\n                        \"00001\": {\n                            \"amount\": \"number\",\n                            \"id\": \"string\",\n                            \"name\": \"string\",\n                            \"quantity\": \"number\",\n                        },\n                    },\n                    \"document\": {\n                        \"code\": \"string\",\n                        \"currentPayment\": \"number\",\n                        \"date\": \"number\",\n                        \"dueDate\": \"number\",\n                        \"initialAmount\": \"number\",\n                        \"number\": \"string\",\n                        \"paidAmount\": \"number\",\n                        \"paydAmount\": \"number\",\n                        \"pos\": \"string\",\n                        \"quotaNumber\": \"number\",\n                        \"type\": \"string\",\n                    },\n                    \"id\": \"string\",\n                },\n            },\n            \"license\": \"string\",\n            \"position\": {\n                \"coords\": {\n                    \"latitude\": \"string\",\n                    \"longitude\": \"string\"\n                },\n                \"mocked\": \"boolean\"\n            },\n            \"payments\": {\n                \"56vVH3Qeg7ixH7bajFO4\": {\n                    \"amount\": \"number\",\n                    \"id\": \"string\",\n                    \"method\": \"number\",\n                    \"time\": \"number\",\n                },\n            },\n            \"seller\": \"string\",\n            \"state\": \"number\",\n            \"time\": \"number\",\n            \"receiptNumber\": \"number\",\n            \"totalAmount\": \"number\",\n        }\n    },\n    \"companies\": {\n        \"00001\": {\n            \"name\": \"string\"\n        }\n    },\n    \"currentAccount\": {\n        \"1GxFloYeHzVMNXxyVtEM\": {\n            \"client\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n            },\n            \"detail\": {\n                \"00001\": {\n                    \"amount\": \"number\",\n                    \"id\": \"string\",\n                    \"name\": \"string\",\n                    \"quantity\": \"number\",\n                },\n            },\n            \"document\": {\n                \"code\": \"string\",\n                \"date\": \"number\",\n                \"dueDate\": \"number\",\n                \"initialAmount\": \"number\",\n                \"number\": \"string\",\n                \"paidAmount\": \"number\",\n                \"paydAmount\": \"number\",\n                \"pos\": \"string\",\n                \"quotaNumber\": \"number\",\n                \"type\": \"string\",\n            },\n            \"id\": \"string\",\n        }\n    },\n    \"deposits\": {\n        \"HttPRGVB7m7Ie8uGJHzX\": {\n            \"name\": \"string\"\n        }\n    },\n    \"groupers\": {\n        \"Uiw2pQUS3gU8XTieMVna\": {\n            \"articles\": {\n                \"QU63Lm6CaMspN0qXEuVR\": {\n                    \"order\": \"number\",\n                },\n            },\n            \"groupers\": {\n                //... repeat groupers structure\n            },\n            \"name\": \"string\",\n            \"image\": \"string\"\n        }\n    },\n    \"news\": {\n        \"TtQ6O940SuaONNLpY1Hw\": {\n            \"description\": \"string\",\n            \"destination\": {\n                \"2\": true\n            },\n            \"image\": \"string\",\n            \"time\": \"number\",\n            \"title\": \"string\",\n        }\n    },\n    \"notBuy\": {\n        \"MY4Md2hxTnhZDjz4Fg0f\": {\n            \"client\": {\n                \"fiscal\": {\n                    \"cuil\": \"string\",\n                    \"vat\": \"string\",\n                },\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"pricelist\": \"string\",\n                \"saleCondition\": \"string\",\n            },\n            \"license\": \"string\",\n            \"position\": {\n                \"coords\": {\n                    \"latitude\": \"string\",\n                    \"longitude\": \"string\"\n                },\n                \"mocked\": \"boolean\"\n            },\n            \"reason\": {\n                \"key\": \"string\",\n                \"name\": \"string\"\n            },\n            \"seller\": \"string\",\n            \"time\": \"number\"\n        }\n    },\n    \"offers\": {\n        \"description\": \"string\",\n        \"destination\": {\n            \"2\": true\n        },\n        \"image\": \"string\", // Url\n        \"pack\": \"string\", // it must be a key of a pack\n        \"time\": \"number\",\n        \"title\": \"text\"\n    },\n    \"orders\": {\n        \"sBzIu8La6HBOhjMQ1ySR\": {\n            \"client\": {\n                \"fiscal\": {\n                    \"cuil\": \"string\",\n                    \"vat\": \"string\",\n                },\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"pricelist\": \"string\",\n                \"saleCondition\": \"string\",\n            },\n            \"license\": \"string\",\n            \"position\": {\n                \"coords\": {\n                    \"latitude\": \"string\",\n                    \"longitude\": \"string\"\n                },\n                \"mocked\": \"boolean\"\n            },\n            \"finished\": \"boolean\",\n            \"globalBonus\": {\n                \"fixed\": \"boolean\",\n                \"amount\": \"number\"\n            },\n            \"totals\": {\n                \"totalOrders\": \"number\",\n                \"totalPacks\": \"number\",\n                \"total\": \"number\"\n            },\n            \"timeStart\": \"number\",\n            \"timeEnd\": \"number\",\n            \"state\": \"number\",\n            \"seller\": \"string\",\n            \"saleCondition\": \"string\",\n            \"origin\": \"number\",\n            \"company\": \"string\",\n            \"observation\": \"qwe\",\n            \"order\": {\n                \"dTjnqBSYWqIIJlyRosNo\": {\n                    \"discount\": \"number\",\n                    \"extras\": {\n                        \"00001\": {\n                            \"amount\": \"number\",\n                            \"fixed\": \"boolean\",\n                            \"priority\": \"number\",\n                            \"surcharge\": \"boolean\",\n                            \"discount\": \"boolean\",\n                        }\n                    },\n                    \"id\": \"sting\", // example dTjnqBSYWqIIJlyRosNo\n                    \"key\": \"string\",\n                    \"name\": \"string\",\n                    \"netCost\": \"number\",\n                    \"priceListData\": {\n                        \"key\": \"string\",\n                        \"taxes\": {\n                            \"00001\": {\n                                \"amount\": \"number\",\n                                \"fixed\": \"boolean\",\n                            }\n                        }\n                    },\n                    \"quantity\": \"number\",\n                    \"ref\": \"string\",\n                    \"subtotal\": \"number\",\n                    \"total\": \"number\"\n                }\n            }\n        },\n    },\n    \"packs\": {\n        \"ML14VV97ZRhXzvT6F2WT\": {\n            \"articles\": {\n                \"yndo39xi2\": {\n                    \"artId\": \"L12do7ZoaLn8KDmmE5uz\",\n                    \"quantity\": \"number\",\n                    \"discount\": {\n                        \"amount\": \"number\",\n                        \"fixed\": true\n                    }\n                }\n            },\n            \"forcedPrice\": {\n                \"amount\": \"number\",\n                \"forced\": \"boolean\"\n            },\n            \"discount\": {\n                \"amount\": \"number\",\n                \"fixed\": false,\n            },\n            \"name\": \"string\"\n        }\n    },\n    \"priceList\": {\n        \"ZYV06DpEFIAwBFY6kYKL\": {\n            \"articles\": {\n                \"L12do7ZoaLn8KDmmE5uz\": { // it must be the key to a article\n                    \"forcedPrice\": {\n                        \"amount\": \"number\",\n                        \"forced\": \"boolean\",\n                    },\n                    \"taxes\": {\n                        \"00001\": {\n                            \"amount\": \"number\",\n                            \"fixed\": \"boolean\"\n                        }\n                    },\n                    \"discounts\": {\n                        \"00001\": {\n                            \"amount\": \"number\",\n                            \"fixed\": \"boolean\"\n                        }\n                    },\n                    \"key\": \"L12do7ZoaLn8KDmmE5uz\"\n                }\n            },\n            \"extras\": {\n                \"discount\": \"boolean\",\n                \"surcharge\": \"boolean\",\n                \"amount\": \"number\",\n                \"fixed\": \"boolean\",\n                \"priority\": \"number\"\n            }\n        }\n    },\n    \"reasonsNotBuy\": {\n        \"89n6Tewj2gDp3f3Gpghi\": {\n            \"name\": \"string\"\n        }\n    },\n    \"routes\": {\n        \"clientList\": {\n            \"00001\": { // it must be the key to a client\n                \"order\": \"number\"\n            }\n        },\n        \"day\": {\n            \"0\": \"boolean\" // day number 0:Sunday, 6:Saturday\n        },\n        \"name\": \"string\",\n        \"sellers\": {\n            \"00001\": \"boolean\" // it must be the key to a seller\n        },\n    },\n    \"salesCondition\": {\n        \"SmEzpw5WdjQNWXUOHUJn\": {\n            \"bonus\": {\n                \"0101\": {\n                    \"amount\": \"number\",\n                    \"fixed\": true\n                }\n            },\n            \"description\": \"string\",\n            \"moneyCode\": \"string\",\n            \"name\": \"string\",\n            \"observation\": \"string\",\n            \"surcharge\": {\n                \"0101\": {\n                    \"amount\": \"number\",\n                    \"fixed\": true\n                }\n            },\n        }\n    },\n    \"sellers\": {\n        \"00001\": {\n            \"code\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"password\": \"string\",\n            \"profileImage\": \"string\"\n        }\n    },\n    \"stock\": {\n        \"MxGz5dqXAy4PJW6BdRcs\": {\n            \"article\": \"string\", //it must be a key of a article\n            \"deposit\": \"string\", // it must be a key of a deposit\n            \"quantity\": \"number\"\n        }\n    },\n    \"vat\": {\n        \"001\": {\n            \"name\": \"string\"\n        }\n    }\n}\n```\n"
     },
     {
-      "name": "Duty Struct",
-      "description": "## Duty \n ```json \n {\r\n  \"action\": \"set\",\r\n  \"version\": \"1.0\",\r\n  \"token\": \"Tzc9amhGTH2cHvmao1t2\",\r\n  \"ref\": \"sellers\",\r\n  \"data\": {\r\n    00002: {\r\n      \"name\": \"Luis Alterio\",\r\n      \"profileImage\": \"https:\/\/URL\/profile-5.jpg\",\r\n      \"code\": \"00002\",\r\n      \"password\": \"00002\",\r\n      \"id\": \"30400502\"\r\n    },\r\n    \"00007\": {\r\n      \"name\": \"Lucas Archer\",\r\n      \"profileImage\": \"https:\/\/URL\/profile-6.jpg\",\r\n      \"code\": \"00007\",\r\n      \"password\": \"00007\",\r\n      \"id\": \"30400507\"\r\n    }\r\n  }\r\n}"
+      "name": "Conquer Struct",
+      "description": "## CONQUER\n\n```json\n{\n    \"apiSalesClients\": {\n        \"00001\": { // client key\n            \"client\": \"string\", // client key\n            \"email\": \"string\",\n            \"password\": \"string\",\n            \"setPass\": 0 // number 0 | 1   *default 0\n        }\n    },\n    \"apiSalesNewClients\": {\n        \"Yyxxes1PqR4T8sRock8X\": { // client key\n            \"address\": \"string\",\n            \"businessName\": \"string\",\n            \"clientName\": \"string\",\n            \"email\": \"string\",\n            \"locality\": \"string\",\n            \"phone\": \"string\",\n            \"state\": \"string\",\n            \"vatCondition\": \"string\"\n        }\n    },\n    \"articles\": {\n        \"L12do7ZoaLn8KDmmE5uz\": { // article key\n            \"image\": \"string\", // url\n            \"name\": \"string\",\n            \"netCost\": 100, // number\n            \"unitOfMeasurement\": {\n                \"00001\": {\n                    \"equals\": 1, // number  *default 1\n                    \"name\": \"string\"\n                }\n            }\n        }\n    },\n    \"articlesSettings\": {\n        \"Vf3A4qxoWCHPoYdYjG3J\": {\n            \"amount\": 10, //number\n            \"discount\": true, // bool\n            \"fixed\": true, //bool\n            \"name\": \"string\",\n            \"suracharge\": false //bool\n        }\n    },\n    \"banks\": {\n        \"9VqhmuBObmgBTKkznAt\": {\n            \"code\": \"string\",\n            \"name\": \"string\"\n        }\n    },\n    \"clients\": {\n        \"00001\": { // client key\n            \"address\": {\n                \"00001\": {\n                    \"address\": \"string\",\n                    \"country\": \"string\",\n                    \"description\": \"string\", // example: \"work\"\n                    \"neighborhood\": \"string\",\n                    \"state\": \"string\",\n                    \"zip\": \"string\"\n                }\n            },\n            \"email\": {\n                \"00001\": {\n                    \"description\": \"string\", // example: \"work\"\n                    \"email\": \"string\"\n                }\n            },\n            \"fiscal\": {\n                \"cuil\": \"string\",\n                \"vat\": \"string\" // vat key\n            },\n            \"id\": \"string\", // client key\n            \"name\": \"string\",\n            \"phone\": {\n                \"00001\": {\n                    \"description\": \"string\",\n                    \"phone\": \"string\"\n                }\n            },\n            \"pricelist\": \"string\", // pricelist key\n            \"profileImage\": \"string\", // url\n            \"saleCondition\": \"string\", // sale condition key\n            \"sellers\": {\n                \"00001\": true // seller key * bool true | false\n            },\n            \"surcharge\": {\n                \"WXzdjUjQXwWXOWSNWmENH\": {\n                    \"amount\": 10,\n                    \"fixed\": true\n                }\n            },\n            \"taxes\": {\n                \"WXzdjUjQXwWXOWSNWmENH\": {\n                    \"amount\": 10,\n                    \"fixed\": true\n                }\n            }\n        }\n    },\n    \"collections\": {\n        \"VRfZ4okA0xQAZ3oE5GKj\": {\n            \"client\": {\n                \"fiscal\": {\n                    \"cuil\": \"string\",\n                    \"vat\": \"string\",\n                },\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"pricelist\": \"string\",\n                \"saleCondition\": \"string\",\n            },\n            \"imputedDocuments\": {\n                \"1GxFloYeHzVMNXxyVtEM\": {\n                    \"client\": \"string\",\n                    \"detail\": {\n                        \"00001\": {\n                            \"amount\": \"number\",\n                            \"id\": \"string\",\n                            \"name\": \"string\",\n                            \"quantity\": \"number\",\n                        },\n                    },\n                    \"document\": {\n                        \"code\": \"string\",\n                        \"currentPayment\": \"number\",\n                        \"date\": \"number\",\n                        \"dueDate\": \"number\",\n                        \"initialAmount\": \"number\",\n                        \"number\": \"string\",\n                        \"paidAmount\": \"number\",\n                        \"paydAmount\": \"number\",\n                        \"pos\": \"string\",\n                        \"quotaNumber\": \"number\",\n                        \"type\": \"string\",\n                    },\n                    \"id\": \"string\",\n                },\n            },\n            \"license\": \"string\",\n            \"position\": {\n                \"coords\": {\n                    \"latitude\": \"string\",\n                    \"longitude\": \"string\"\n                },\n                \"mocked\": \"boolean\"\n            },\n            \"payments\": {\n                \"56vVH3Qeg7ixH7bajFO4\": {\n                    \"amount\": \"number\",\n                    \"id\": \"string\",\n                    \"method\": \"number\",\n                    \"time\": \"number\",\n                },\n            },\n            \"seller\": \"string\",\n            \"state\": \"number\",\n            \"time\": \"number\",\n            \"receiptNumber\": \"number\",\n            \"totalAmount\": \"number\",\n        }\n    },\n    \"companies\": {\n        \"00001\": {\n            \"name\": \"string\"\n        }\n    },\n    \"currentAccount\": {\n        \"1GxFloYeHzVMNXxyVtEM\": {\n            \"client\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n            },\n            \"detail\": {\n                \"00001\": {\n                    \"amount\": \"number\",\n                    \"id\": \"string\",\n                    \"name\": \"string\",\n                    \"quantity\": \"number\",\n                },\n            },\n            \"document\": {\n                \"code\": \"string\",\n                \"date\": \"number\",\n                \"dueDate\": \"number\",\n                \"initialAmount\": \"number\",\n                \"number\": \"string\",\n                \"paidAmount\": \"number\",\n                \"paydAmount\": \"number\",\n                \"pos\": \"string\",\n                \"quotaNumber\": \"number\",\n                \"type\": \"string\",\n            },\n            \"id\": \"string\",\n        }\n    },\n    \"deposits\": {\n        \"HttPRGVB7m7Ie8uGJHzX\": {\n            \"name\": \"string\"\n        }\n    },\n    \"groupers\": {\n        \"Uiw2pQUS3gU8XTieMVna\": {\n            \"articles\": {\n                \"QU63Lm6CaMspN0qXEuVR\": {\n                    \"order\": \"number\",\n                },\n            },\n            \"groupers\": {\n                //... repeat groupers structure\n            },\n            \"name\": \"string\",\n            \"image\": \"string\"\n        }\n    },\n    \"news\": {\n        \"TtQ6O940SuaONNLpY1Hw\": {\n            \"description\": \"string\",\n            \"destination\": {\n                \"2\": true\n            },\n            \"image\": \"string\",\n            \"time\": \"number\",\n            \"title\": \"string\",\n        }\n    },\n    \"notBuy\": {\n        \"MY4Md2hxTnhZDjz4Fg0f\": {\n            \"client\": {\n                \"fiscal\": {\n                    \"cuil\": \"string\",\n                    \"vat\": \"string\",\n                },\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"pricelist\": \"string\",\n                \"saleCondition\": \"string\",\n            },\n            \"license\": \"string\",\n            \"position\": {\n                \"coords\": {\n                    \"latitude\": \"string\",\n                    \"longitude\": \"string\"\n                },\n                \"mocked\": \"boolean\"\n            },\n            \"reason\": {\n                \"key\": \"string\",\n                \"name\": \"string\"\n            },\n            \"seller\": \"string\",\n            \"time\": \"number\"\n        }\n    },\n    \"offers\": {\n        \"description\": \"string\",\n        \"destination\": {\n            \"2\": true\n        },\n        \"image\": \"string\", // Url\n        \"pack\": \"string\", // it must be a key of a pack\n        \"time\": \"number\",\n        \"title\": \"text\"\n    },\n    \"orders\": {\n        \"sBzIu8La6HBOhjMQ1ySR\": {\n            \"client\": {\n                \"fiscal\": {\n                    \"cuil\": \"string\",\n                    \"vat\": \"string\",\n                },\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"pricelist\": \"string\",\n                \"saleCondition\": \"string\",\n            },\n            \"license\": \"string\",\n            \"position\": {\n                \"coords\": {\n                    \"latitude\": \"string\",\n                    \"longitude\": \"string\"\n                },\n                \"mocked\": \"boolean\"\n            },\n            \"finished\": \"boolean\",\n            \"globalBonus\": {\n                \"fixed\": \"boolean\",\n                \"amount\": \"number\"\n            },\n            \"totals\": {\n                \"totalOrders\": \"number\",\n                \"totalPacks\": \"number\",\n                \"total\": \"number\"\n            },\n            \"timeStart\": \"number\",\n            \"timeEnd\": \"number\",\n            \"state\": \"number\",\n            \"seller\": \"string\",\n            \"saleCondition\": \"string\",\n            \"origin\": \"number\",\n            \"company\": \"string\",\n            \"observation\": \"qwe\",\n            \"order\": {\n                \"dTjnqBSYWqIIJlyRosNo\": {\n                    \"discount\": \"number\",\n                    \"extras\": {\n                        \"00001\": {\n                            \"amount\": \"number\",\n                            \"fixed\": \"boolean\",\n                            \"priority\": \"number\",\n                            \"surcharge\": \"boolean\",\n                            \"discount\": \"boolean\",\n                        }\n                    },\n                    \"id\": \"sting\", // example dTjnqBSYWqIIJlyRosNo\n                    \"key\": \"string\",\n                    \"name\": \"string\",\n                    \"netCost\": \"number\",\n                    \"priceListData\": {\n                        \"key\": \"string\",\n                        \"taxes\": {\n                            \"00001\": {\n                                \"amount\": \"number\",\n                                \"fixed\": \"boolean\",\n                            }\n                        }\n                    },\n                    \"quantity\": \"number\",\n                    \"ref\": \"string\",\n                    \"subtotal\": \"number\",\n                    \"total\": \"number\"\n                }\n            }\n        },\n    },\n    \"packs\": {\n        \"ML14VV97ZRhXzvT6F2WT\": {\n            \"articles\": {\n                \"yndo39xi2\": {\n                    \"artId\": \"L12do7ZoaLn8KDmmE5uz\",\n                    \"quantity\": \"number\",\n                    \"discount\": {\n                        \"amount\": \"number\",\n                        \"fixed\": true\n                    }\n                }\n            },\n            \"forcedPrice\": {\n                \"amount\": \"number\",\n                \"forced\": \"boolean\"\n            },\n            \"discount\": {\n                \"amount\": \"number\",\n                \"fixed\": false,\n            },\n            \"name\": \"string\"\n        }\n    },\n    \"priceList\": {\n        \"ZYV06DpEFIAwBFY6kYKL\": {\n            \"articles\": {\n                \"L12do7ZoaLn8KDmmE5uz\": { // it must be the key to a article\n                    \"forcedPrice\": {\n                        \"amount\": \"number\",\n                        \"forced\": \"boolean\",\n                    },\n                    \"taxes\": {\n                        \"00001\": {\n                            \"amount\": \"number\",\n                            \"fixed\": \"boolean\"\n                        }\n                    },\n                    \"discounts\": {\n                        \"00001\": {\n                            \"amount\": \"number\",\n                            \"fixed\": \"boolean\"\n                        }\n                    },\n                    \"key\": \"L12do7ZoaLn8KDmmE5uz\"\n                }\n            },\n            \"extras\": {\n                \"discount\": \"boolean\",\n                \"surcharge\": \"boolean\",\n                \"amount\": \"number\",\n                \"fixed\": \"boolean\",\n                \"priority\": \"number\"\n            }\n        }\n    },\n    \"reasonsNotBuy\": {\n        \"89n6Tewj2gDp3f3Gpghi\": {\n            \"name\": \"string\"\n        }\n    },\n    \"routes\": {\n        \"clientList\": {\n            \"00001\": { // it must be the key to a client\n                \"order\": \"number\"\n            }\n        },\n        \"day\": {\n            \"0\": \"boolean\" // day number 0:Sunday, 6:Saturday\n        },\n        \"name\": \"string\",\n        \"sellers\": {\n            \"00001\": \"boolean\" // it must be the key to a seller\n        },\n    },\n    \"salesCondition\": {\n        \"SmEzpw5WdjQNWXUOHUJn\": {\n            \"bonus\": {\n                \"0101\": {\n                    \"amount\": \"number\",\n                    \"fixed\": true\n                }\n            },\n            \"description\": \"string\",\n            \"moneyCode\": \"string\",\n            \"name\": \"string\",\n            \"observation\": \"string\",\n            \"surcharge\": {\n                \"0101\": {\n                    \"amount\": \"number\",\n                    \"fixed\": true\n                }\n            },\n        }\n    },\n    \"sellers\": {\n        \"00001\": {\n            \"code\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"password\": \"string\",\n            \"profileImage\": \"string\"\n        }\n    },\n    \"stock\": {\n        \"MxGz5dqXAy4PJW6BdRcs\": {\n            \"article\": \"string\", //it must be a key of a article\n            \"deposit\": \"string\", // it must be a key of a deposit\n            \"quantity\": \"number\"\n        }\n    },\n    \"vat\": {\n        \"001\": {\n            \"name\": \"string\"\n        }\n    }\n}\n```\n"
     }
   ],
   "paths": {
     "/transaction/": {
-      "parameters": [
-      ],
+      "parameters": [],
       "post": {
         "tags": [
           "Read"
         ],
         "summary": "Get information from database",
-        "description": "Using the `action` parameter in read, you can get information from database.\nIt is possible to specify the reference table `ref` and the key of the value `key` in the search.",
+        "description": "Using the `action` parameter in read, you can get information from database.\nIt is possible to specify the search path `ref` in each search.\n\n In this example `sellers` represents a reference to the table that contains all the sellers, with only that reference you get the whole list of sellers.\nThen with `sellers/001` you can get that seller specifically. You can continue specifying the route to obtain more specific data such as name or password.",
         "operationId": "readDB",
         "parameters": [
           {
@@ -96,11 +95,26 @@
             "description": "",
             "examples": {
               "application/json": {
-                "name": "hernan bruno",
-                "profileImage": "https://URL/profile-4.jpg",
-                "code": "00001",
-                "password": "00001",
-                "id": "30400500"
+                "data": {
+                  "code": "001",
+                  "id": "0000",
+                  "name": "CAJERO CENTRAL",
+                  "password": "0"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "Error": "Data Not Found",
+                "Request": {
+                  "token": "oP0zw3GV233OxPofGDin",
+                  "version": "1.1",
+                  "action": "read",
+                  "ref": "sellers/`Wrong seller`"
+                }
               }
             }
           },
@@ -110,26 +124,24 @@
               "application/json": {
                 "Error": "Invalid Token",
                 "Request": {
+                  "token": "`Wrong Token`",
+                  "version": "1.1",
                   "action": "read",
-                  "version": "1.0",
-                  "token": "Non-existent-Token",
-                  "ref": "sellers",
-                  "key": "00001"
+                  "ref": "sellers/001"
                 }
               }
             }
           },
-          "400": {
+          "405": {
             "description": "",
             "examples": {
               "application/json": {
-                "Error": "Invalid Values",
+                "Error": "Invalid Action",
                 "Request": {
-                  "action": "Invalid action or",
-                  "version": "Invalid version or",
-                  "token": "Tzc9amhGTH2cHvmao1t2",
-                  "ref": "Invalid Ref or",
-                  "key": "Invalid Key"
+                  "token": "oP0zw3GV233OxPofGDin",
+                  "version": "1.1",
+                  "action": "`Wrong action`",
+                  "ref": "sellers/001"
                 }
               }
             }
@@ -138,14 +150,13 @@
       }
     },
     "/transaction": {
-      "parameters": [
-      ],
+      "parameters": [],
       "post": {
         "tags": [
           "Set"
         ],
         "summary": "Set information in database",
-        "description": "Using the `action` parameter in set, you can set information in database.\nIt is necessary to specify the reference table `ref`.\n\nThe information must be established in JSON format in the `data` field. Each new value must be indexed by key.\n\n   ### Accepted Values to be ref \n ```json \n'REF':\n{\n   'sellers': true,\n   'notBuy': true,\n   'apiSalesNewClients': true,\n   'routes': true,\n   'collections': true,\n   'groupers': true,\n   'iva': true,\n   'currentAccount': true,\n   'clients': true,\n   'apiSalesClients': true,\n   'banks': true,\n   'reasonsNotBuy': true,\n   'salesCondition': true,\n   'articles': true,\n   'news': true,\n   'orders': true,\n   'priceList': true\n}",
+        "description": "Using the `action` parameter in set, you can set information in database.\nIt is necessary to specify the reference path `ref`.\n\n In this example `sellers` represents a reference to the table that contains all the sellers, with only that reference you can set the whole list of sellers.\nThen with `sellers/0001` you can set that seller specifically. You can continue specifying the route to set more specific data such as name or password.",
         "operationId": "setDB",
         "parameters": [
           {
@@ -174,7 +185,21 @@
             "description": "",
             "examples": {
               "application/json": {
-                "Success": "Successfully data!"
+                "success": "Successfully data!"
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "Error": "There is no data to set",
+                "Request": {
+                  "token": "oP0zw3GV233OxPofGDin",
+                  "version": "1.1",
+                  "action": "set",
+                  "ref": "sellers/001"
+                }
               }
             }
           },
@@ -184,63 +209,51 @@
               "application/json": {
                 "Error": "Invalid Token",
                 "Request": {
+                  "token": "`Wrong Token`",
+                  "version": "1.1",
                   "action": "set",
-                  "version": "1.0",
-                  "token": "Non-existent-Token",
-                  "ref": "sellers",
-                  "key": "00001"
+                  "ref": "sellers/001",
+                  "val": {
+                    "code": "001",
+                    "id": "0000",
+                    "name": "CAJERO CENTRAL",
+                    "password": "0"
+                  }
                 }
               }
             }
           },
-          "400": {
+          "405": {
             "description": "",
             "examples": {
-              "application/json": [{
-                "Error": "Invalid reference",
-                "Accepted Values": {
-                  "clients": true,
-                  "apiSalesClients": true,
-                  "banks": true,
-                  "reasonsNotBuy": true,
-                  "salesCondition": true,
-                  "articles": true,
-                  "news": true,
-                  "orders": true,
-                  "priceList": true,
-                  "sellers": true,
-                  "notBuy": true,
-                  "apiSalesNewClients": true,
-                  "routes": true,
-                  "collections": true,
-                  "groupers": true,
-                  "iva": true,
-                  "currentAccount": true
-                }
-              },
-                {
-                  "Error": "No Data",
-                  "Request": {
-                    "action": "set",
-                    "version": "1.0",
-                    "token": "Tzc9amhGTH2cHvmao1t2",
-                    "ref": "sellers"
+              "application/json": {
+                "Error": "Invalid Action",
+                "Request": {
+                  "token": "oP0zw3GV233OxPofGDin",
+                  "version": "1.1",
+                  "action": "`Wrong action`",
+                  "ref": "sellers/001",
+                  "val": {
+                    "code": "001",
+                    "id": "0000",
+                    "name": "CAJERO CENTRAL",
+                    "password": "0"
                   }
-                }]
+                }
+              }
             }
           }
         }
       }
     },
     "/transaction/#": {
-      "parameters": [
-      ],
+      "parameters": [],
       "post": {
         "tags": [
           "Update"
         ],
         "summary": "Update information in database",
-        "description": "Using the `action` parameter in update, you can update information in database.\nIt is necessary to specify the reference table `ref`.\n\nThe information must be established in JSON format in the `data` field. Each existing value must be indexed by key.\n\nThe key must necessarily exist.\n\n   ### Accepted Values to be ref \n ```json \n'REF':\n{\n   'sellers': true,\n   'notBuy': true,\n   'apiSalesNewClients': true,\n   'routes': true,\n   'collections': true,\n   'groupers': true,\n   'iva': true,\n   'currentAccount': true,\n   'clients': true,\n   'apiSalesClients': true,\n   'banks': true,\n   'reasonsNotBuy': true,\n   'salesCondition': true,\n   'articles': true,\n   'news': true,\n   'orders': true,\n   'priceList': true\n}",
+        "description": "Using the `action` parameter in set, you can update information in database.\nIt is necessary to specify the reference path `ref`.\n\n In this example `sellers` represents a reference to the table that contains all the sellers, with only that reference you can update the whole list of sellers.\nThen with `sellers/0001` you can update that seller specifically. You can continue specifying the route to update more specific data such as name or password.",
         "operationId": "updateDB",
         "parameters": [
           {
@@ -269,7 +282,21 @@
             "description": "",
             "examples": {
               "application/json": {
-                "Success": "Successfully updated data!"
+                "success": "Successfully data!"
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "Error": "There is no data to set",
+                "Request": {
+                  "token": "oP0zw3GV233OxPofGDin",
+                  "version": "1.1",
+                  "action": "set",
+                  "ref": "sellers/001"
+                }
               }
             }
           },
@@ -279,63 +306,51 @@
               "application/json": {
                 "Error": "Invalid Token",
                 "Request": {
-                  "action": "update",
-                  "version": "1.0",
-                  "token": "Non-existent-Token",
-                  "ref": "sellers",
-                  "key": "00001"
+                  "token": "`Wrong Token`",
+                  "version": "1.1",
+                  "action": "set",
+                  "ref": "sellers/001",
+                  "val": {
+                    "code": "001",
+                    "id": "0000",
+                    "name": "CAJERO CENTRAL",
+                    "password": "0"
+                  }
                 }
               }
             }
           },
-          "400": {
+          "405": {
             "description": "",
             "examples": {
-              "application/json": [{
-                "Error": "Invalid reference",
-                "Accepted Values": {
-                  "clients": true,
-                  "apiSalesClients": true,
-                  "banks": true,
-                  "reasonsNotBuy": true,
-                  "salesCondition": true,
-                  "articles": true,
-                  "news": true,
-                  "orders": true,
-                  "priceList": true,
-                  "sellers": true,
-                  "notBuy": true,
-                  "apiSalesNewClients": true,
-                  "routes": true,
-                  "collections": true,
-                  "groupers": true,
-                  "iva": true,
-                  "currentAccount": true
-                }
-              },
-                {
-                  "Error": "No Data",
-                  "Request": {
-                    "action": "update",
-                    "version": "1.0",
-                    "token": "Tzc9amhGTH2cHvmao1t2",
-                    "ref": "sellers"
+              "application/json": {
+                "Error": "Invalid Action",
+                "Request": {
+                  "token": "oP0zw3GV233OxPofGDin",
+                  "version": "1.1",
+                  "action": "`Wrong action`",
+                  "ref": "sellers/001",
+                  "val": {
+                    "code": "001",
+                    "id": "0000",
+                    "name": "CAJERO CENTRAL",
+                    "password": "0"
                   }
-                }]
+                }
+              }
             }
           }
         }
       }
     },
     "/transaction/?": {
-      "parameters": [
-      ],
+      "parameters": [],
       "post": {
         "tags": [
           "Delete"
         ],
         "summary": "Delete information from database",
-        "description": "Using the `action` parameter in delete, you can delete information from database.\n It is possible to specify the reference table `ref` and the key of the value `key` in this operation. \n\nThe key must necessarily exist in database.\n\n",
+        "description": "Using the `action` parameter in set, you can delete information in database.\nIt is necessary to specify the reference path `ref`.\n\n In this example `sellers` represents a reference to the table that contains all the sellers, with only that reference you can delete the whole list of sellers.\nThen with `sellers/0001` you can delete that seller specifically. You can continue specifying the route to delete more specific data such as name or password.",
         "operationId": "deleteDB",
         "parameters": [
           {
@@ -352,7 +367,7 @@
             "description": "Delete specific data",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/BodyRead"
+              "$ref": "#/definitions/BodyDelete"
             }
           }
         ],
@@ -364,7 +379,21 @@
             "description": "",
             "examples": {
               "application/json": {
-                "Success": "Data deleted successfully!"
+                "success": "Successfully data!"
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "Error": "There is no data to set",
+                "Request": {
+                  "token": "oP0zw3GV233OxPofGDin",
+                  "version": "1.1",
+                  "action": "set",
+                  "ref": "sellers/001"
+                }
               }
             }
           },
@@ -374,64 +403,46 @@
               "application/json": {
                 "Error": "Invalid Token",
                 "Request": {
-                  "action": "delete",
-                  "version": "1.0",
-                  "token": "Non-existent-Token",
-                  "ref": "sellers",
-                  "key": "00001"
+                  "token": "`Wrong Token`",
+                  "version": "1.1",
+                  "action": "set",
+                  "ref": "sellers/001",
+                  "val": null
                 }
               }
             }
           },
-          "400": {
+          "405": {
             "description": "",
             "examples": {
-              "application/json": [{
-                "Error": "Invalid reference",
-                "Accepted Values": {
-                  "clients": true,
-                  "apiSalesClients": true,
-                  "banks": true,
-                  "reasonsNotBuy": true,
-                  "salesCondition": true,
-                  "articles": true,
-                  "news": true,
-                  "orders": true,
-                  "priceList": true,
-                  "sellers": true,
-                  "notBuy": true,
-                  "apiSalesNewClients": true,
-                  "routes": true,
-                  "collections": true,
-                  "groupers": true,
-                  "iva": true,
-                  "currentAccount": true
+              "application/json": {
+                "Error": "Invalid Action",
+                "Request": {
+                  "token": "oP0zw3GV233OxPofGDin",
+                  "version": "1.1",
+                  "action": "`Wrong action`",
+                  "ref": "sellers/001",
+                  "val": null
                 }
-              },
-                {
-                  "Error": "Invalid Values",
-                  "Request": {
-                    "action": "delete",
-                    "version": "1.0",
-                    "token": "Tzc9amhGTH2cHvmao1t2",
-                    "ref": "sellers",
-                    "key": "Non-existent-Key"
-                  }
-                }]
+              }
             }
           }
         }
       }
     },
     "/struct/": {
-      "parameters": [
-      ]
+      "parameters": []
     }
   },
   "definitions": {
     "BodyRead": {
       "type": "object",
-      "required":["action","version","token"],
+      "required": [
+        "action",
+        "version",
+        "token",
+        "ref"
+      ],
       "properties": {
         "action": {
           "description": "read  &nbsp;&nbsp;->&nbsp;&nbsp; (Action to Read)",
@@ -439,9 +450,9 @@
           "example": "read"
         },
         "version": {
-          "description": "1.0  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)",
+          "description": "1.1  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)",
           "type": "string",
-          "example": "1.0"
+          "example": "1.1"
         },
         "token": {
           "description": "Token of the environment",
@@ -451,20 +462,19 @@
         "ref": {
           "description": "Reference Table",
           "type": "string",
-          "example": "sellers",
-          "x-nullable": true
-        },
-        "key": {
-          "description": "Key of the Value",
-          "type": "string",
-          "example": "00001",
-          "x-nullable": true
+          "example": "sellers/001"
         }
       }
     },
     "BodySet": {
       "type": "object",
-      "required":["action","version","token","ref","data"],
+      "required": [
+        "action",
+        "version",
+        "token",
+        "ref",
+        "val"
+      ],
       "properties": {
         "action": {
           "description": "set  &nbsp;&nbsp;->&nbsp;&nbsp; (Action to Set)",
@@ -472,9 +482,9 @@
           "example": "set"
         },
         "version": {
-          "description": "1.0  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)",
+          "description": "1.1  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)",
           "type": "string",
-          "example": "1.0"
+          "example": "1.1"
         },
         "token": {
           "description": "Token of the environment",
@@ -486,25 +496,52 @@
           "type": "string",
           "example": "sellers"
         },
-        "data": {
+        "val": {
           "description": "Data to Set",
           "type": "string",
           "example": {
-            "00002":{
-              "name": "Luis Alterio",
-              "profileImage": "https://URL/profile-5.jpg",
-              "code": "00002",
-              "password": "00002",
-              "id": "30400502"
-            },
-            "00007":{
-              "name": "Lucas Archer",
-              "profileImage": "https://URL/profile-6.jpg",
-              "code": "00007",
-              "password": "00007",
-              "id": "30400507"
-            }
+            "code": "001",
+            "id": "0000",
+            "name": "CAJERO CENTRAL",
+            "password": "0"
           }
+        }
+      }
+    },
+    "BodyDelete": {
+      "type": "object",
+      "required": [
+        "action",
+        "version",
+        "token",
+        "ref",
+        "val"
+      ],
+      "properties": {
+        "action": {
+          "description": "set  &nbsp;&nbsp;->&nbsp;&nbsp; (Action to Set)",
+          "type": "string",
+          "example": "set"
+        },
+        "version": {
+          "description": "1.1  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)",
+          "type": "string",
+          "example": "1.1"
+        },
+        "token": {
+          "description": "Token of the environment",
+          "type": "string",
+          "example": "Tzc9amhGTH2cHvmao1t2"
+        },
+        "ref": {
+          "description": "Reference Table",
+          "type": "string",
+          "example": "sellers/001"
+        },
+        "val": {
+          "description": "null  &nbsp;&nbsp;->&nbsp;&nbsp; (Must be null)",
+          "type": "string",
+          "example": null
         }
       }
     }
