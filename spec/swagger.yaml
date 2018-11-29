@@ -3,7 +3,7 @@ swagger: '2.0'
 schemes:
 - http
 - https
-host: us-central1-db-kiri.cloudfunctions.net
+host: 192.241.158.61:4444
 basePath: "/"
 info:
   description: "This is an API for direct connection and data synchronization.\n#
@@ -15,7 +15,7 @@ info:
     traffic inspection. A consumer can understand and interact with the remote service
     with\na minimal amount of implementation logic. Similar to what interfaces have
     done for lower-level programming,\nthis API removes the guesswork in calling the
-    service. \n\n# URL\n https://us-central1-db-kiri.cloudfunctions.net/transaction/"
+    service. \n\n# URL\n http://192.241.158.61:4444/"
   version: '1.1'
   title: Docs for Kiri Api
   termsOfService: https://kiri.mobi/web/politicadeprivacidad.html
@@ -44,1160 +44,537 @@ tags:
 - name: Delete
   description: Example Delete operations
 - name: Duty Struct
-  description: |
-    ## DUTY
-
-    ```json
-    {
-        "apiSalesClients": {
-            "00001": { // client key
-                "k": "string", // client key
-                "e": "string", // email
-                "p": "string", // password
-                "sp": 0, // setPassword  number 0 | 1   *default 0
-                "t":"number" // time added
-            }
-        },
-        "apiSalesNewClients": {
-            "Yyxxes1PqR4T8sRock8X": { // client key
-                "a": "string", //address
-                "bn": "string", // business name
-                "n": "string", // client name
-                "e": "string", // email
-                "l": "string", // locality
-                "p": "string", // phone number
-                "s": "string", // state
-                "v": "string", // vat condition key
-                "k":"string",// key
-                "t":"number" // time added
-            }
-        },
-        "articles": {
-            "L12do7ZoaLn8KDmmE5uz": { // article key
-                "i": "string", // url image
-                "n": "string", //   name
-                "nc": 100, // number | net cost
-                "b":"string",// brand key
-                "k": "string", // article key
-                "w": "string", // weight
-                "t":"number", // time added/changed
-                "dum": "string", // default unit of measurement
-                "um": {     //unit of measurement
-                    "00001": {
-                        "k": "string", // key
-                        "e": 1, // equals | number *default 1
-                        "n": "string" // name
-                    }
-                }
-            }
-        },
-        "articlesSettings": {
-            "Vf3A4qxoWCHPoYdYjG3J": {
-                "a": "number", //amount
-                "b": { // bonuses list
-                    "0101": {
-                        "a": "number", // amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string", // name
-                        "d": "string", // description
-                        "k":"string" // key
-                    }
-                },
-                "k":"string",//key
-                "t":"number",//time added
-                "s": { // surcharges list
-                    "0101": {
-                        "a": "number", // amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string",// name
-                        "d": "string", // description
-                        "k":"string" // key
-                    }
-                },
-            }
-        },
-        "banks": {
-            "0001": { // bank code
-                "k": "string", // bank code
-                "n": "string",   // bank name
-                "t":"number"// time added/changed
-            }
-        },
-        "brands": {
-            "00001": { // brand key
-                "k": "string", // brand key
-                "n": "string",   // brand name
-                "t":"number"// time added/changed
-            }
-        },
-        "clients": {
-            "00001": { // client key
-                "a": {  // address list
-                    "00001": {
-                        "a": "string", // address
-                        "c": "string", // country
-                        "d": "string", // description | example: "work"
-                        "n": "string", // neighborhood
-                        "s": "string", // state
-                        "z": "string" //  zip
-                    }
-                },
-                "e": {  //email list
-                    "00001": {
-                        "d": "string", // description | example: "work"
-                        "e": "string" //  email
-                    }
-                },
-                "f": { //fiscal info
-                    "c": "string", // cuit | cuil
-                    "v": "string" // vat key
-                },
-                "i": "string", //id number
-                "it": "string", // id type | like dni, passport,root
-                "k": "string", // client key
-                "n": "string", // client name
-                "bn": "string", // business name
-                "p": {  //phone list
-                    "00001": { //phone key
-                        "k":"string", //phone key
-                        "d": "string", //description
-                        "p": "string"  // phone number
-                    }
-                },
-                "pl": "string", // price list key
-                "pi": "string", // url profile image
-                "sc": "string", // sale condition key
-                "s": { //sellers list
-                    "00001": true // seller key * bool true | false
-                },
-                "b": { //bonus list
-                    "WXzdjUjQXwWXOWSNWmENH": { //bonus key
-                        "k":"string",//key
-                        "a": 10, //amount
-                        "f": "boolean", // fixed  * bool true | false
-                        "n": "string",// name
-                        "d": "string", // description
-                    }
-                },
-                "su": { //surcharge list
-                    "WXzdjUjQXwWXOWSNWmENH": { //surcharge key
-                        "k":"string",//key
-                        "a": 10, //amount
-                        "f": "boolean", // fixed  * bool true | false
-                        "n": "string",// name
-                        "d": "string", // description
-                    }
-                },
-                "ta": { // taxes list
-                    "WXzdjUjQXwWXOWSNWmENH": { //tax key
-                        "k":"string",//key
-                        "a": 10, //amount
-                        "f": "boolean", // fixed * bool true | false
-                        "n": "string", // name
-                        "d": "string",  // description
-                    }
-                },
-                "t":"number" // time added/changed
-            }
-        },
-        "collections": {
-            "VRfZ4okA0xQAZ3oE5GKj": { // collection key
-                "c": { // client info
-                    "f": { // fiscal info
-                        "c": "string", // cuil-cuit
-                        "v": "string", // vat key
-                    },
-                    "i": "string",// id number
-                    "it":"string", // id type, like dni,root,passport
-                    "n": "string", //ma,e
-                    "pl": "string",// price list key
-                    "sc": "string",// sale condition key
-                },
-                "id": { // imputed documents list
-                    "1GxFloYeHzVMNXxyVtEM": { // imputed document key
-                        "c": { // client info
-                            "k": "string", // client key
-                            "n": "string", // client name
-                        },
-                        "d": { // document info
-                            "c": "string", // document code
-                            "d": "number", // date
-                            "dd": "number", // due date
-                            "n": "string", // number
-                            "ia": "number",// initial amount
-                            "pa": "number", // paid amount
-                            "pos": "string", // point of sale
-                            "qn": "number", //quote number
-                            "t": "string", // type
-                        },
-                        "k": "string", //document key
-                    },
-                },
-                "l": "string",// license key
-                "p": { // position
-                    "c": { //coordinates
-                        "la": "string",// latitude
-                        "lo": "string" // longitude
-                    },
-                    "m": "boolean" // mocked
-                },
-                "py": { // payments list
-                    "56vVH3Qeg7ixH7bajFO4": { //payment key
-                        "a": "number", // amount
-                        "k": "string",// key
-                        "m": "number",// method
-                        "t": "number",// time
-                    },
-                },
-                "s": "string", // seller key
-                "st": "number", // status
-                "t": "number", // time
-                "r": "number", // receipt number
-                "ta": "number",// total amount
-                "k":"string"//key
-            }
-    					},
-        "companies": {
-            "00001": {
-                "k":"string",// company key
-                "n": "string", //    name
-                "t":"number" // time added/changed
-            }
-        },
-        "currentAccount": {
-            "1GxFloYeHzVMNXxyVtEM": { // key
-                "c": { // client info
-                    "k": "string", // client key
-                    "n": "string", // client name
-                },
-                "d": { // document info
-                    "c": "string", // document code
-                    "d": "number", // date
-                    "dd": "number", // due date
-                    "n": "string", // number
-                    "ia": "number",// initial amount
-                    "pa": "number", // paid amount
-                    "pos": "string", // point of sale
-                    "qn": "number", //quote number
-                    "t": "string", // type
-                },
-                "k": "string", //document key
-                "t":"number" // time added/changed
-            }
-        },
-        "deposits": {
-            "HttPRGVB7m7Ie8uGJHzX": { // deposit key
-                "k":"string", // key
-                "n": "string",  //name
-                "t":"number"// time added/changed
-
-            }
-        },
-        "groupers": {
-            "Uiw2pQUS3gU8XTieMVna": { // key
-                "a": { // articles list
-                    "QU63Lm6CaMspN0qXEuVR": { // article key
-                        "k":"string", // key
-                        "o": "number", // order
-                    },
-                },
-                "g": { // groupers list
-                    //... repeat groupers structure
-                },
-                "k":"string", // key
-                "n": "string", //name
-                "i": "string", // image
-                "t":"number"// time added/changed
-
-            }
-        },
-        "news": {
-            "TtQ6O940SuaONNLpY1Hw": { //key
-                "de": { // destination
-                    "2": "boolean" // destination key * bool true | false
-                },
-                "k":"string", // key
-                "i": "string",// image
-                "tm": "number", // time of new
-                "ti": "string", // title
-                "d": "string", // description
-                "t":"number" // time added/changed
-            }
-        },
-        "notBuy": {
-            "MY4Md2hxTnhZDjz4Fg0f": {
-                "c": { // client info
-                    "f": { // fiscal info
-                        "c": "string", // cuil-cuit
-                        "v": "string", // vat key
-                    },
-                    "i": "string",// id number
-                    "it":"string", // id type, like dni,root,passport
-                    "n": "string", //ma,e
-                    "pl": "string",// price list key
-                    "sc": "string",// sale condition key
-                },
-                "l": "string",// license key
-                "p": { // position
-                    "c": { //coordinates
-                        "la": "string",// latitude
-                        "lo": "string" // longitude
-                    },
-                    "m": "boolean" // mocked
-                },
-                "r": { // reason
-                    "k": "string",// key
-                    "n": "string" // name
-                },
-                "s": "string", // seller key
-                "t": "number" // time
-            }
-        },
-        "offers": {
-            "0001":{ // offer key
-                "de": { // destination
-                    "2": "boolean" // destination key * bool true | false
-                },
-                "k":"string", // key
-                "i": "string",// image
-                "tm": "number", // time of new
-                "ti": "string", // title
-                "d": "string", // description
-                "p":"string", // pack key
-                "t":"number" // time added/changed
-            }
-
-        },
-        "orders": {
-            "sBzIu8La6HBOhjMQ1ySR": {
-                "c": { // client info
-                    "f": { // fiscal info
-                        "c": "string", // cuil-cuit
-                        "v": "string", // vat key
-                    },
-                    "i": "string",// id number
-                    "it":"string", // id type, like dni,root,passport
-                    "n": "string", //ma,e
-                    "pl": "string",// price list key
-                    "sc": "string",// sale condition key
-                },
-                "l": "string",// license key
-                "p": { // position
-                    "c": { //coordinates
-                        "la": "string",// latitude
-                        "lo": "string" // longitude
-                    },
-                    "m": "boolean" // mocked
-                },
-                "f": "boolean",// finished
-                "gb": { // global bonus
-                    "f": "boolean", // fixed
-                    "a": "number" // amount
-                },
-                "tt": { // totals
-                    "to": "number", // total order
-                    "tp": "number", // total packs
-                    "t": "number" // total
-                },
-                "ts": "number", // time start
-                "te": "number", // time end
-                "s": "number", // state
-                "se": "string", // seller key
-                "sc": "string", // sale condition key
-                "or": "number", // origin
-                "co": "string",// company
-                "ob": "qwe",// observation
-                "o": { // order detail
-                    "dTjnqBSYWqIIJlyRosNo": {
-                        "b": "number", // bonus
-                        "e": { // extras list
-                            "00001": { // extra key
-                                "di": "boolean",// discount
-                                "s": "boolean",// surcharge
-                                "a": "number", //amount
-                                "f": "boolean", // fixed * bool true|false
-                                "n": "string", // name
-                                "d": "string", // description
-                                "k": "string" // key
-                            }
-                        },
-                        "k": "string",// key
-                        "n": "string",//name
-                        "nc": "number",// net cost
-                        "pld": { //price list data
-                            "t": { // taxes list
-                                "00001": { // tax key
-                                    "a": "number", //amount
-                                    "f": "boolean", // fixed * bool true|false
-                                    "n": "string", // name
-                                    "d": "string", // description
-                                    "k": "string" // key
-                                }
-                            },
-                            "f": { // forced price
-                                "a": "number", //amount
-                                "f": "boolean", // fixed * bool true|false
-                            },
-                            "n": "string",// name
-                            "b": { // bonuses list
-                                "00001": { // bonus key
-                                    "a": "number", //amount
-                                    "f": "boolean", // fixed * bool true|false
-                                    "n": "string", // name
-                                    "d": "string", // description
-                                    "k": "string" // key
-                                }
-                            },
-                            "k": "string" // key
-                        },
-                        "q": "number",// quantity
-                        "r": "string",// reference
-                        "s": "number",// subtotal
-                        "t": "number"// total
-                    }
-                },
-                "t":"number", // time added
-                "k":"string" // key
-            },
-        },
-        "packs": {
-            "ML14VV97ZRhXzvT6F2WT": { // pack key
-                "a": { // articles list
-                    "yndo39xi2": { // article key
-                        "k": "string",// key
-                        "q": "number", // quantity
-                        "b": { //bonus
-                            "a": "number", //amount
-                            "f": "boolean" // fixed * boolean true|false
-                        }
-                    }
-                },
-                "fp": { //foreced Price
-                    "a": "number", //amount
-                    "f": "boolean" //fixed * boolean true|false
-                },
-                "b": { // bonus
-                    "a": "number", //amount
-                    "f": "boolean", // fixed * boolean true|false
-                },
-                "n": "string", //name
-                "k": "string", // key
-                "t":"number"// time added/changed
-            }
-        },
-        "priceList": {
-            "ZYV06DpEFIAwBFY6kYKL": { // price list key
-                "a": { // articles list
-                    "L12do7ZoaLn8KDmmE5uz": { // it must be the key to a article
-                        "f": { // forced price
-                            "a": "number", //amount
-                            "f": "boolean", // fixed * bool true|false
-                        },
-                        "u":{ // utility
-                            "a":"number", //amount
-                            "f":"boolean" // fixed * bool true|false
-                        },
-                        "t": { // taxes list
-                            "00001": { // tax key
-                                "a": "number", //amount
-                                "f": "boolean", // fixed * bool true|false
-                                "n": "string", // name
-                                "d": "string", // description
-                                "k": "string" // key
-                            }
-                        },
-                        "b": { // bonuses list
-                            "00001": { // bonus key
-                                "a": "number", //amount
-                                "f": "boolean", // fixed * bool true|false
-                                "n": "string", // name
-                                "d": "string", // description
-                                "k": "string" // key
-                            }
-                        },
-                        "k": "string" // key
-                    }
-                },
-                "k": "string", // key
-                "n": "string", //name
-                "e": { // extras list
-                    "00001": { // extra key
-                        "di": "boolean",// discount
-                        "s": "boolean",// surcharge
-                        "a": "number", //amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string", // name
-                        "d": "string", // description
-                        "k": "string" // key
-                    }
-                }
-            }
-        },
-        "reasonsNotBuy": {
-            "89n6Tewj2gDp3f3Gpghi": { // reason key
-                "n": "string",// name
-                "t":"number", // time added/changed
-                "k":"string"  // key
-            }
-        },
-        "routes": {
-            "00001":{ //route key
-                "cl": {
-                 "00001": { // it must be the key to a client
-                        "k":"string",// key
-                        "o": "number" // client order
-                    }
-                },
-                "d": { // days list
-                    "0": "boolean" // day number 0:Sunday, 6:Saturday | true
-                },
-                "n": "string", // name
-                "s": { // sellers list
-                    "00001": "boolean" // it must be the key to a seller  | true
-               },
-               "k":"string",//key
-               "t":"number" // time added/changed
-
-            }
-        },
-        "salesCondition": {
-            "SmEzpw5WdjQNWXUOHUJn": {
-                "b": { // bonuses list
-                    "0101": {
-                        "a": "number", // amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string", // name
-                        "d": "string", // description
-                        "k":"string" // key
-                    }
-                },
-                "d": "string", // description
-                "mc": "string",// money code
-                "n": "string", // name
-                "s": { // surcharges list
-                    "0101": {
-                        "a": "number", // amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string",// name
-                        "d": "string", // description
-                        "k":"string" // key
-                    }
-                },
-                "t":"number" // time added/changed
-            }
-        },
-        "sellers": {
-            "00001": {
-
-                "i": "string", // id number
-                "it":"string", // id type, like dni,root,passport
-                "k":"string", //key
-                "n": "string", // name
-                "p": "string", //password
-                "pi": "string", // profile image
-                "t":"number" // time added/changed
-            }
-        },
-        "stock": {
-            "00100001": { // key composed by deposit key and article key
-                "a": "string", //it must be a key of a article
-                "d": "string", // it must be a key of a deposit
-                "q": "number", // quantity
-                "k":"string",  // key
-                "t":"number"// time added/changed
-            }
-        },
-        "vat": {
-            "001": { // vat key
-                "n": "string", // name
-                "k":"string", // key
-                "t":"number" //time added/changed
-            }
-        }
-    }
-    ```
+  description: "## DUTY\n\n```json\n{\n    \"apiSalesClients\": {\n        \"00001\":
+    { // client key\n            \"k\": \"string\", // client key\n            \"e\":
+    \"string\", // email\n            \"p\": \"string\", // password\n            \"sp\":
+    0, // setPassword  number 0 | 1   *default 0\n            \"t\":\"number\" //
+    time added\n        }\n    },\n    \"apiSalesNewClients\": {\n        \"Yyxxes1PqR4T8sRock8X\":
+    { // client key\n            \"a\": \"string\", //address\n            \"bn\":
+    \"string\", // business name\n            \"n\": \"string\", // client name\n
+    \           \"e\": \"string\", // email\n            \"l\": \"string\", // locality\n
+    \           \"p\": \"string\", // phone number\n            \"s\": \"string\",
+    // state\n            \"v\": \"string\", // vat condition key\n            \"k\":\"string\",//
+    key\n            \"t\":\"number\" // time added\n        }\n    },\n    \"articles\":
+    {\n        \"L12do7ZoaLn8KDmmE5uz\": { // article key\n            \"i\": \"string\",
+    // url image\n            \"n\": \"string\", //   name\n            \"nc\": 100,
+    // number | net cost\n            \"b\":\"string\",// brand key\n            \"k\":
+    \"string\", // article key\n            \"w\": \"string\", // weight\n            \"t\":\"number\",
+    // time added/changed\n            \"dum\": \"string\", // default unit of measurement\n
+    \           \"um\": {     //unit of measurement\n                \"00001\": {\n
+    \                   \"k\": \"string\", // key\n                    \"e\": 1, //
+    equals | number *default 1\n                    \"n\": \"string\" // name\n                }\n
+    \           }\n        }\n    },\n    \"articlesSettings\": {\n        \"Vf3A4qxoWCHPoYdYjG3J\":
+    {\n            \"a\": \"number\", //amount\n            \"b\": { // bonuses list\n
+    \               \"0101\": {\n                    \"a\": \"number\", // amount\n
+    \                   \"f\": \"boolean\", // fixed * bool true|false\n                    \"n\":
+    \"string\", // name\n                    \"d\": \"string\", // description\n                    \"k\":\"string\"
+    // key\n                }\n            },\n            \"k\":\"string\",//key\n
+    \           \"t\":\"number\",//time added\n            \"s\": { // surcharges
+    list\n                \"0101\": {\n                    \"a\": \"number\", // amount\n
+    \                   \"f\": \"boolean\", // fixed * bool true|false\n                    \"n\":
+    \"string\",// name\n                    \"d\": \"string\", // description\n                    \"k\":\"string\"
+    // key\n                }\n            },\n        }\n    },\n    \"banks\": {\n
+    \       \"0001\": { // bank code\n            \"k\": \"string\", // bank code\n
+    \           \"n\": \"string\",   // bank name\n            \"t\":\"number\"//
+    time added/changed\n        }\n    },\n    \"brands\": {\n        \"00001\": {
+    // brand key\n            \"k\": \"string\", // brand key\n            \"n\":
+    \"string\",   // brand name\n            \"t\":\"number\"// time added/changed\n
+    \       }\n    },\n    \"clients\": {\n        \"00001\": { // client key\n            \"a\":
+    {  // address list\n                \"00001\": {\n                    \"a\": \"string\",
+    // address\n                    \"c\": \"string\", // country\n                    \"d\":
+    \"string\", // description | example: \"work\"\n                    \"n\": \"string\",
+    // neighborhood\n                    \"s\": \"string\", // state\n                    \"z\":
+    \"string\" //  zip\n                }\n            },\n            \"e\": {  //email
+    list\n                \"00001\": {\n                    \"d\": \"string\", //
+    description | example: \"work\"\n                    \"e\": \"string\" //  email\n
+    \               }\n            },\n            \"f\": { //fiscal info\n                \"c\":
+    \"string\", // cuit | cuil\n                \"v\": \"string\" // vat key\n            },\n
+    \           \"i\": \"string\", //id number\n            \"it\": \"string\", //
+    id type | like dni, passport,root\n            \"k\": \"string\", // client key\n
+    \           \"n\": \"string\", // client name\n            \"bn\": \"string\",
+    // business name\n            \"p\": {  //phone list\n                \"00001\":
+    { //phone key\n                    \"k\":\"string\", //phone key\n                    \"d\":
+    \"string\", //description\n                    \"p\": \"string\"  // phone number\n
+    \               }\n            },\n            \"pl\": \"string\", // price list
+    key\n            \"pi\": \"string\", // url profile image\n            \"sc\":
+    \"string\", // sale condition key\n            \"s\": { //sellers list\n                \"00001\":
+    true // seller key * bool true | false\n            },\n            \"b\": { //bonus
+    list\n                \"WXzdjUjQXwWXOWSNWmENH\": { //bonus key\n                    \"k\":\"string\",//key\n
+    \                   \"a\": 10, //amount\n                    \"f\": \"boolean\",
+    // fixed  * bool true | false\n                    \"n\": \"string\",// name\n
+    \                   \"d\": \"string\", // description\n                }\n            },\n
+    \           \"su\": { //surcharge list\n                \"WXzdjUjQXwWXOWSNWmENH\":
+    { //surcharge key\n                    \"k\":\"string\",//key\n                    \"a\":
+    10, //amount\n                    \"f\": \"boolean\", // fixed  * bool true |
+    false\n                    \"n\": \"string\",// name\n                    \"d\":
+    \"string\", // description\n                }\n            },\n            \"ta\":
+    { // taxes list\n                \"WXzdjUjQXwWXOWSNWmENH\": { //tax key\n                    \"k\":\"string\",//key\n
+    \                   \"a\": 10, //amount\n                    \"f\": \"boolean\",
+    // fixed * bool true | false\n                    \"n\": \"string\", // name\n
+    \                   \"d\": \"string\",  // description\n                }\n            },\n
+    \           \"t\":\"number\" // time added/changed\n        }\n    },\n    \"collections\":
+    {\n        \"VRfZ4okA0xQAZ3oE5GKj\": { // collection key\n            \"c\": {
+    // client info\n                \"f\": { // fiscal info\n                    \"c\":
+    \"string\", // cuil-cuit\n                    \"v\": \"string\", // vat key\n
+    \               },\n                \"i\": \"string\",// id number\n                \"it\":\"string\",
+    // id type, like dni,root,passport\n                \"n\": \"string\", //ma,e\n
+    \               \"pl\": \"string\",// price list key\n                \"sc\":
+    \"string\",// sale condition key\n            },\n            \"id\": { // imputed
+    documents list\n                \"1GxFloYeHzVMNXxyVtEM\": { // imputed document
+    key\n                    \"c\": { // client info\n                        \"k\":
+    \"string\", // client key\n                        \"n\": \"string\", // client
+    name\n                    },\n                    \"d\": { // document info\n
+    \                       \"c\": \"string\", // document code\n                        \"d\":
+    \"number\", // date\n                        \"dd\": \"number\", // due date\n
+    \                       \"n\": \"string\", // number\n                        \"ia\":
+    \"number\",// initial amount\n                        \"pa\": \"number\", // paid
+    amount\n                        \"pos\": \"string\", // point of sale\n                        \"qn\":
+    \"number\", //quote number\n                        \"t\": \"string\", // type\n
+    \                   },\n                    \"k\": \"string\", //document key\n
+    \               },\n            },\n            \"l\": \"string\",// license key\n
+    \           \"p\": { // position\n                \"c\": { //coordinates\n                    \"la\":
+    \"string\",// latitude\n                    \"lo\": \"string\" // longitude\n
+    \               },\n                \"m\": \"boolean\" // mocked\n            },\n
+    \           \"py\": { // payments list\n                \"56vVH3Qeg7ixH7bajFO4\":
+    { //payment key\n                    \"a\": \"number\", // amount\n                    \"k\":
+    \"string\",// key\n                    \"m\": \"number\",// method\n                    \"t\":
+    \"number\",// time\n                },\n            },\n            \"s\": \"string\",
+    // seller key\n            \"st\": \"number\", // status\n            \"t\": \"number\",
+    // time\n            \"r\": \"number\", // receipt number\n            \"ta\":
+    \"number\",// total amount\n            \"k\":\"string\"//key\n        }\n\t\t\t\t\t},\n
+    \   \"companies\": {\n        \"00001\": {\n            \"k\":\"string\",// company
+    key\n            \"n\": \"string\", //    name\n            \"t\":\"number\" //
+    time added/changed\n        }\n    },\n    \"currentAccount\": {\n        \"1GxFloYeHzVMNXxyVtEM\":
+    { // key\n            \"c\": { // client info\n                \"k\": \"string\",
+    // client key\n                \"n\": \"string\", // client name\n            },\n
+    \           \"d\": { // document info\n                \"c\": \"string\", // document
+    code\n                \"d\": \"number\", // date\n                \"dd\": \"number\",
+    // due date\n                \"n\": \"string\", // number\n                \"ia\":
+    \"number\",// initial amount\n                \"pa\": \"number\", // paid amount\n
+    \               \"pos\": \"string\", // point of sale\n                \"qn\":
+    \"number\", //quote number\n                \"t\": \"string\", // type\n            },\n
+    \           \"k\": \"string\", //document key\n            \"t\":\"number\" //
+    time added/changed\n        }\n    },\n    \"deposits\": {\n        \"HttPRGVB7m7Ie8uGJHzX\":
+    { // deposit key\n            \"k\":\"string\", // key\n            \"n\": \"string\",
+    \ //name\n            \"t\":\"number\"// time added/changed\n\n        }\n    },\n
+    \   \"groupers\": {\n        \"Uiw2pQUS3gU8XTieMVna\": { // key\n            \"a\":
+    { // articles list\n                \"QU63Lm6CaMspN0qXEuVR\": { // article key\n
+    \                   \"k\":\"string\", // key\n                    \"o\": \"number\",
+    // order\n                },\n            },\n            \"g\": { // groupers
+    list\n                //... repeat groupers structure\n            },\n            \"k\":\"string\",
+    // key\n            \"n\": \"string\", //name\n            \"i\": \"string\",
+    // image\n            \"t\":\"number\"// time added/changed\n\n        }\n    },\n
+    \   \"news\": {\n        \"TtQ6O940SuaONNLpY1Hw\": { //key\n            \"de\":
+    { // destination\n                \"2\": \"boolean\" // destination key * bool
+    true | false\n            },\n            \"k\":\"string\", // key\n            \"i\":
+    \"string\",// image\n            \"tm\": \"number\", // time of new\n            \"ti\":
+    \"string\", // title\n            \"d\": \"string\", // description\n            \"t\":\"number\"
+    // time added/changed\n        }\n    },\n    \"notBuy\": {\n        \"MY4Md2hxTnhZDjz4Fg0f\":
+    {\n            \"c\": { // client info\n                \"f\": { // fiscal info\n
+    \                   \"c\": \"string\", // cuil-cuit\n                    \"v\":
+    \"string\", // vat key\n                },\n                \"i\": \"string\",//
+    id number\n                \"it\":\"string\", // id type, like dni,root,passport\n
+    \               \"n\": \"string\", //ma,e\n                \"pl\": \"string\",//
+    price list key\n                \"sc\": \"string\",// sale condition key\n            },\n
+    \           \"l\": \"string\",// license key\n            \"p\": { // position\n
+    \               \"c\": { //coordinates\n                    \"la\": \"string\",//
+    latitude\n                    \"lo\": \"string\" // longitude\n                },\n
+    \               \"m\": \"boolean\" // mocked\n            },\n            \"r\":
+    { // reason\n                \"k\": \"string\",// key\n                \"n\":
+    \"string\" // name\n            },\n            \"s\": \"string\", // seller key\n
+    \           \"t\": \"number\" // time\n        }\n    },\n    \"offers\": {\n
+    \       \"0001\":{ // offer key\n            \"de\": { // destination\n                \"2\":
+    \"boolean\" // destination key * bool true | false\n            },\n            \"k\":\"string\",
+    // key\n            \"i\": \"string\",// image\n            \"tm\": \"number\",
+    // time of new\n            \"ti\": \"string\", // title\n            \"d\": \"string\",
+    // description\n            \"p\":\"string\", // pack key\n            \"t\":\"number\"
+    // time added/changed\n        }\n\n    },\n    \"orders\": {\n        \"sBzIu8La6HBOhjMQ1ySR\":
+    {\n            \"c\": { // client info\n                \"f\": { // fiscal info\n
+    \                   \"c\": \"string\", // cuil-cuit\n                    \"v\":
+    \"string\", // vat key\n                },\n                \"i\": \"string\",//
+    id number\n                \"it\":\"string\", // id type, like dni,root,passport\n
+    \               \"n\": \"string\", //ma,e\n                \"pl\": \"string\",//
+    price list key\n                \"sc\": \"string\",// sale condition key\n            },\n
+    \           \"l\": \"string\",// license key\n            \"p\": { // position\n
+    \               \"c\": { //coordinates\n                    \"la\": \"string\",//
+    latitude\n                    \"lo\": \"string\" // longitude\n                },\n
+    \               \"m\": \"boolean\" // mocked\n            },\n            \"f\":
+    \"boolean\",// finished\n            \"gb\": { // global bonus\n                \"f\":
+    \"boolean\", // fixed\n                \"a\": \"number\" // amount\n            },\n
+    \           \"tt\": { // totals\n                \"to\": \"number\", // total
+    order\n                \"tp\": \"number\", // total packs\n                \"t\":
+    \"number\" // total\n            },\n            \"ts\": \"number\", // time start\n
+    \           \"te\": \"number\", // time end\n            \"s\": \"number\", //
+    state\n            \"se\": \"string\", // seller key\n            \"sc\": \"string\",
+    // sale condition key\n            \"or\": \"number\", // origin\n            \"co\":
+    \"string\",// company\n            \"ob\": \"qwe\",// observation\n            \"o\":
+    { // order detail\n                \"dTjnqBSYWqIIJlyRosNo\": {\n                    \"b\":
+    \"number\", // bonus\n                    \"e\": { // extras list\n                        \"00001\":
+    { // extra key\n                            \"di\": \"boolean\",// discount\n
+    \                           \"s\": \"boolean\",// surcharge\n                            \"a\":
+    \"number\", //amount\n                            \"f\": \"boolean\", // fixed
+    * bool true|false\n                            \"n\": \"string\", // name\n                            \"d\":
+    \"string\", // description\n                            \"k\": \"string\" // key\n
+    \                       }\n                    },\n                    \"k\":
+    \"string\",// key\n                    \"n\": \"string\",//name\n                    \"nc\":
+    \"number\",// net cost\n                    \"pld\": { //price list data\n                        \"t\":
+    { // taxes list\n                            \"00001\": { // tax key\n                                \"a\":
+    \"number\", //amount\n                                \"f\": \"boolean\", // fixed
+    * bool true|false\n                                \"n\": \"string\", // name\n
+    \                               \"d\": \"string\", // description\n                                \"k\":
+    \"string\" // key\n                            }\n                        },\n
+    \                       \"f\": { // forced price\n                            \"a\":
+    \"number\", //amount\n                            \"f\": \"boolean\", // fixed
+    * bool true|false\n                        },\n                        \"n\":
+    \"string\",// name\n                        \"b\": { // bonuses list\n                            \"00001\":
+    { // bonus key\n                                \"a\": \"number\", //amount\n
+    \                               \"f\": \"boolean\", // fixed * bool true|false\n
+    \                               \"n\": \"string\", // name\n                                \"d\":
+    \"string\", // description\n                                \"k\": \"string\"
+    // key\n                            }\n                        },\n                        \"k\":
+    \"string\" // key\n                    },\n                    \"q\": \"number\",//
+    quantity\n                    \"r\": \"string\",// reference\n                    \"s\":
+    \"number\",// subtotal\n                    \"t\": \"number\"// total\n                }\n
+    \           },\n            \"t\":\"number\", // time added\n            \"k\":\"string\"
+    // key\n        },\n    },\n    \"packs\": {\n        \"ML14VV97ZRhXzvT6F2WT\":
+    { // pack key\n            \"a\": { // articles list\n                \"yndo39xi2\":
+    { // article key\n                    \"k\": \"string\",// key\n                    \"q\":
+    \"number\", // quantity\n                    \"b\": { //bonus\n                        \"a\":
+    \"number\", //amount\n                        \"f\": \"boolean\" // fixed * boolean
+    true|false\n                    }\n                }\n            },\n            \"fp\":
+    { //foreced Price\n                \"a\": \"number\", //amount\n                \"f\":
+    \"boolean\" //fixed * boolean true|false\n            },\n            \"b\": {
+    // bonus\n                \"a\": \"number\", //amount\n                \"f\":
+    \"boolean\", // fixed * boolean true|false\n            },\n            \"n\":
+    \"string\", //name\n            \"k\": \"string\", // key\n            \"t\":\"number\"//
+    time added/changed\n        }\n    },\n    \"priceList\": {\n        \"ZYV06DpEFIAwBFY6kYKL\":
+    { // price list key\n            \"a\": { // articles list\n                \"L12do7ZoaLn8KDmmE5uz\":
+    { // it must be the key to a article\n                    \"f\": { // forced price\n
+    \                       \"a\": \"number\", //amount\n                        \"f\":
+    \"boolean\", // fixed * bool true|false\n                    },\n                    \"u\":{
+    // utility\n                        \"a\":\"number\", //amount\n                        \"f\":\"boolean\"
+    // fixed * bool true|false\n                    },\n                    \"t\":
+    { // taxes list\n                        \"00001\": { // tax key\n                            \"a\":
+    \"number\", //amount\n                            \"f\": \"boolean\", // fixed
+    * bool true|false\n                            \"n\": \"string\", // name\n                            \"d\":
+    \"string\", // description\n                            \"k\": \"string\" // key\n
+    \                       }\n                    },\n                    \"b\":
+    { // bonuses list\n                        \"00001\": { // bonus key\n                            \"a\":
+    \"number\", //amount\n                            \"f\": \"boolean\", // fixed
+    * bool true|false\n                            \"n\": \"string\", // name\n                            \"d\":
+    \"string\", // description\n                            \"k\": \"string\" // key\n
+    \                       }\n                    },\n                    \"k\":
+    \"string\" // key\n                }\n            },\n            \"k\": \"string\",
+    // key\n            \"n\": \"string\", //name\n            \"e\": { // extras
+    list\n                \"00001\": { // extra key\n                    \"di\": \"boolean\",//
+    discount\n                    \"s\": \"boolean\",// surcharge\n                    \"a\":
+    \"number\", //amount\n                    \"f\": \"boolean\", // fixed * bool
+    true|false\n                    \"n\": \"string\", // name\n                    \"d\":
+    \"string\", // description\n                    \"k\": \"string\" // key\n                }\n
+    \           }\n        }\n    },\n    \"reasonsNotBuy\": {\n        \"89n6Tewj2gDp3f3Gpghi\":
+    { // reason key\n            \"n\": \"string\",// name\n            \"t\":\"number\",
+    // time added/changed\n            \"k\":\"string\"  // key\n        }\n    },\n
+    \   \"routes\": {\n        \"00001\":{ //route key\n            \"cl\": {\n             \"00001\":
+    { // it must be the key to a client\n                    \"k\":\"string\",// key\n
+    \                   \"o\": \"number\" // client order\n                }\n            },\n
+    \           \"d\": { // days list\n                \"0\": \"boolean\" // day number
+    0:Sunday, 6:Saturday | true\n            },\n            \"n\": \"string\", //
+    name\n            \"s\": { // sellers list\n                \"00001\": \"boolean\"
+    // it must be the key to a seller  | true\n           },\n           \"k\":\"string\",//key\n
+    \          \"t\":\"number\" // time added/changed\n\n        }\n    },\n    \"salesCondition\":
+    {\n        \"SmEzpw5WdjQNWXUOHUJn\": {\n            \"b\": { // bonuses list\n
+    \               \"0101\": {\n                    \"a\": \"number\", // amount\n
+    \                   \"f\": \"boolean\", // fixed * bool true|false\n                    \"n\":
+    \"string\", // name\n                    \"d\": \"string\", // description\n                    \"k\":\"string\"
+    // key\n                }\n            },\n            \"d\": \"string\", // description\n
+    \           \"mc\": \"string\",// money code\n            \"n\": \"string\", //
+    name\n            \"s\": { // surcharges list\n                \"0101\": {\n                    \"a\":
+    \"number\", // amount\n                    \"f\": \"boolean\", // fixed * bool
+    true|false\n                    \"n\": \"string\",// name\n                    \"d\":
+    \"string\", // description\n                    \"k\":\"string\" // key\n                }\n
+    \           },\n            \"t\":\"number\" // time added/changed\n        }\n
+    \   },\n    \"sellers\": {\n        \"00001\": {\n\n            \"i\": \"string\",
+    // id number\n            \"it\":\"string\", // id type, like dni,root,passport\n
+    \           \"k\":\"string\", //key\n            \"n\": \"string\", // name\n
+    \           \"p\": \"string\", //password\n            \"pi\": \"string\", //
+    profile image\n            \"t\":\"number\" // time added/changed\n        }\n
+    \   },\n    \"stock\": {\n        \"00100001\": { // key composed by deposit key
+    and article key\n            \"a\": \"string\", //it must be a key of a article\n
+    \           \"d\": \"string\", // it must be a key of a deposit\n            \"q\":
+    \"number\", // quantity\n            \"k\":\"string\",  // key\n            \"t\":\"number\"//
+    time added/changed\n        }\n    },\n    \"vat\": {\n        \"001\": { // vat
+    key\n            \"n\": \"string\", // name\n            \"k\":\"string\", //
+    key\n            \"t\":\"number\" //time added/changed\n        }\n    }\n}\n```\n"
 - name: Conquer Struct
-  description: |
-    ## CONQUER
-
-    ```json
-    {
-        "apiSalesClients": {
-            "00001": { // client key
-                "k": "string", // client key
-                "e": "string", // email
-                "p": "string", // password
-                "sp": 0, // setPassword  number 0 | 1   *default 0
-                "t":"number" // time added
-            }
-        },
-        "apiSalesNewClients": {
-            "Yyxxes1PqR4T8sRock8X": { // client key
-                "a": "string", //address
-                "bn": "string", // business name
-                "n": "string", // client name
-                "e": "string", // email
-                "l": "string", // locality
-                "p": "string", // phone number
-                "s": "string", // state
-                "v": "string", // vat condition key
-                "k":"string",// key
-                "t":"number" // time added
-            }
-        },
-        "articles": {
-            "L12do7ZoaLn8KDmmE5uz": { // article key
-                "i": "string", // url image
-                "n": "string", //   name
-                "nc": 100, // number | net cost
-                "b":"string",// brand key
-                "k": "string", // article key
-                "w": "string", // weight
-                "t":"number", // time added/changed
-                "dum": "string", // default unit of measurement
-                "um": {     //unit of measurement
-                    "00001": {
-                        "k": "string", // key
-                        "e": 1, // equals | number *default 1
-                        "n": "string" // name
-                    }
-                }
-            }
-        },
-        "articlesSettings": {
-            "Vf3A4qxoWCHPoYdYjG3J": {
-                "a": "number", //amount
-                "b": { // bonuses list
-                    "0101": {
-                        "a": "number", // amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string", // name
-                        "d": "string", // description
-                        "k":"string" // key
-                    }
-                },
-                "k":"string",//key
-                "t":"number",//time added
-                "s": { // surcharges list
-                    "0101": {
-                        "a": "number", // amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string",// name
-                        "d": "string", // description
-                        "k":"string" // key
-                    }
-                },
-            }
-        },
-        "banks": {
-            "0001": { // bank code
-                "k": "string", // bank code
-                "n": "string",   // bank name
-                "t":"number"// time added/changed
-            }
-        },
-        "brands": {
-            "00001": { // brand key
-                "k": "string", // brand key
-                "n": "string",   // brand name
-                "t":"number"// time added/changed
-            }
-        },
-        "clients": {
-            "00001": { // client key
-                "a": {  // address list
-                    "00001": {
-                        "a": "string", // address
-                        "c": "string", // country
-                        "d": "string", // description | example: "work"
-                        "n": "string", // neighborhood
-                        "s": "string", // state
-                        "z": "string" //  zip
-                    }
-                },
-                "e": {  //email list
-                    "00001": {
-                        "d": "string", // description | example: "work"
-                        "e": "string" //  email
-                    }
-                },
-                "f": { //fiscal info
-                    "c": "string", // cuit | cuil
-                    "v": "string" // vat key
-                },
-                "i": "string", //id number
-                "it": "string", // id type | like dni, passport,root
-                "k": "string", // client key
-                "n": "string", // client name
-                "bn": "string", // business name
-                "p": {  //phone list
-                    "00001": { //phone key
-                        "k":"string", //phone key
-                        "d": "string", //description
-                        "p": "string"  // phone number
-                    }
-                },
-                "pl": "string", // price list key
-                "pi": "string", // url profile image
-                "sc": "string", // sale condition key
-                "s": { //sellers list
-                    "00001": true // seller key * bool true | false
-                },
-                "b": { //bonus list
-                    "WXzdjUjQXwWXOWSNWmENH": { //bonus key
-                        "k":"string",//key
-                        "a": 10, //amount
-                        "f": "boolean", // fixed  * bool true | false
-                        "n": "string",// name
-                        "d": "string", // description
-                    }
-                },
-                "su": { //surcharge list
-                    "WXzdjUjQXwWXOWSNWmENH": { //surcharge key
-                        "k":"string",//key
-                        "a": 10, //amount
-                        "f": "boolean", // fixed  * bool true | false
-                        "n": "string",// name
-                        "d": "string", // description
-                    }
-                },
-                "ta": { // taxes list
-                    "WXzdjUjQXwWXOWSNWmENH": { //tax key
-                        "k":"string",//key
-                        "a": 10, //amount
-                        "f": "boolean", // fixed * bool true | false
-                        "n": "string", // name
-                        "d": "string",  // description
-                    }
-                },
-                "t":"number" // time added/changed
-            }
-        },
-        "collections": {
-            "VRfZ4okA0xQAZ3oE5GKj": { // collection key
-                "c": { // client info
-                    "f": { // fiscal info
-                        "c": "string", // cuil-cuit
-                        "v": "string", // vat key
-                    },
-                    "i": "string",// id number
-                    "it":"string", // id type, like dni,root,passport
-                    "n": "string", //ma,e
-                    "pl": "string",// price list key
-                    "sc": "string",// sale condition key
-                },
-                "id": { // imputed documents list
-                    "1GxFloYeHzVMNXxyVtEM": { // imputed document key
-                        "c": { // client info
-                            "k": "string", // client key
-                            "n": "string", // client name
-                        },
-                        "d": { // document info
-                            "c": "string", // document code
-                            "d": "number", // date
-                            "dd": "number", // due date
-                            "n": "string", // number
-                            "ia": "number",// initial amount
-                            "pa": "number", // paid amount
-                            "pos": "string", // point of sale
-                            "qn": "number", //quote number
-                            "t": "string", // type
-                        },
-                        "k": "string", //document key
-                    },
-                },
-                "l": "string",// license key
-                "p": { // position
-                    "c": { //coordinates
-                        "la": "string",// latitude
-                        "lo": "string" // longitude
-                    },
-                    "m": "boolean" // mocked
-                },
-                "py": { // payments list
-                    "56vVH3Qeg7ixH7bajFO4": { //payment key
-                        "a": "number", // amount
-                        "k": "string",// key
-                        "m": "number",// method
-                        "t": "number",// time
-                    },
-                },
-                "s": "string", // seller key
-                "st": "number", // status
-                "t": "number", // time
-                "r": "number", // receipt number
-                "ta": "number",// total amount
-                "k":"string"//key
-            }
-    					},
-        "companies": {
-            "00001": {
-                "k":"string",// company key
-                "n": "string", //    name
-                "t":"number" // time added/changed
-            }
-        },
-        "currentAccount": {
-            "1GxFloYeHzVMNXxyVtEM": { // key
-                "c": { // client info
-                    "k": "string", // client key
-                    "n": "string", // client name
-                },
-                "d": { // document info
-                    "c": "string", // document code
-                    "d": "number", // date
-                    "dd": "number", // due date
-                    "n": "string", // number
-                    "ia": "number",// initial amount
-                    "pa": "number", // paid amount
-                    "pos": "string", // point of sale
-                    "qn": "number", //quote number
-                    "t": "string", // type
-                },
-                "k": "string", //document key
-                "t":"number" // time added/changed
-            }
-        },
-        "deposits": {
-            "HttPRGVB7m7Ie8uGJHzX": { // deposit key
-                "k":"string", // key
-                "n": "string",  //name
-                "t":"number"// time added/changed
-
-            }
-        },
-        "groupers": {
-            "Uiw2pQUS3gU8XTieMVna": { // key
-                "a": { // articles list
-                    "QU63Lm6CaMspN0qXEuVR": { // article key
-                        "k":"string", // key
-                        "o": "number", // order
-                    },
-                },
-                "g": { // groupers list
-                    //... repeat groupers structure
-                },
-                "k":"string", // key
-                "n": "string", //name
-                "i": "string", // image
-                "t":"number"// time added/changed
-
-            }
-        },
-        "news": {
-            "TtQ6O940SuaONNLpY1Hw": { //key
-                "de": { // destination
-                    "2": "boolean" // destination key * bool true | false
-                },
-                "k":"string", // key
-                "i": "string",// image
-                "tm": "number", // time of new
-                "ti": "string", // title
-                "d": "string", // description
-                "t":"number" // time added/changed
-            }
-        },
-        "notBuy": {
-            "MY4Md2hxTnhZDjz4Fg0f": {
-                "c": { // client info
-                    "f": { // fiscal info
-                        "c": "string", // cuil-cuit
-                        "v": "string", // vat key
-                    },
-                    "i": "string",// id number
-                    "it":"string", // id type, like dni,root,passport
-                    "n": "string", //ma,e
-                    "pl": "string",// price list key
-                    "sc": "string",// sale condition key
-                },
-                "l": "string",// license key
-                "p": { // position
-                    "c": { //coordinates
-                        "la": "string",// latitude
-                        "lo": "string" // longitude
-                    },
-                    "m": "boolean" // mocked
-                },
-                "r": { // reason
-                    "k": "string",// key
-                    "n": "string" // name
-                },
-                "s": "string", // seller key
-                "t": "number" // time
-            }
-        },
-        "offers": {
-            "0001":{ // offer key
-                "de": { // destination
-                    "2": "boolean" // destination key * bool true | false
-                },
-                "k":"string", // key
-                "i": "string",// image
-                "tm": "number", // time of new
-                "ti": "string", // title
-                "d": "string", // description
-                "p":"string", // pack key
-                "t":"number" // time added/changed
-            }
-
-        },
-        "orders": {
-            "sBzIu8La6HBOhjMQ1ySR": {
-                "c": { // client info
-                    "f": { // fiscal info
-                        "c": "string", // cuil-cuit
-                        "v": "string", // vat key
-                    },
-                    "i": "string",// id number
-                    "it":"string", // id type, like dni,root,passport
-                    "n": "string", //ma,e
-                    "pl": "string",// price list key
-                    "sc": "string",// sale condition key
-                },
-                "l": "string",// license key
-                "p": { // position
-                    "c": { //coordinates
-                        "la": "string",// latitude
-                        "lo": "string" // longitude
-                    },
-                    "m": "boolean" // mocked
-                },
-                "f": "boolean",// finished
-                "gb": { // global bonus
-                    "f": "boolean", // fixed
-                    "a": "number" // amount
-                },
-                "tt": { // totals
-                    "to": "number", // total order
-                    "tp": "number", // total packs
-                    "t": "number" // total
-                },
-                "ts": "number", // time start
-                "te": "number", // time end
-                "s": "number", // state
-                "se": "string", // seller key
-                "sc": "string", // sale condition key
-                "or": "number", // origin
-                "co": "string",// company
-                "ob": "qwe",// observation
-                "o": { // order detail
-                    "dTjnqBSYWqIIJlyRosNo": {
-                        "b": "number", // bonus
-                        "e": { // extras list
-                            "00001": { // extra key
-                                "di": "boolean",// discount
-                                "s": "boolean",// surcharge
-                                "a": "number", //amount
-                                "f": "boolean", // fixed * bool true|false
-                                "n": "string", // name
-                                "d": "string", // description
-                                "k": "string" // key
-                            }
-                        },
-                        "k": "string",// key
-                        "n": "string",//name
-                        "nc": "number",// net cost
-                        "pld": { //price list data
-                            "t": { // taxes list
-                                "00001": { // tax key
-                                    "a": "number", //amount
-                                    "f": "boolean", // fixed * bool true|false
-                                    "n": "string", // name
-                                    "d": "string", // description
-                                    "k": "string" // key
-                                }
-                            },
-                            "f": { // forced price
-                                "a": "number", //amount
-                                "f": "boolean", // fixed * bool true|false
-                            },
-                            "n": "string",// name
-                            "b": { // bonuses list
-                                "00001": { // bonus key
-                                    "a": "number", //amount
-                                    "f": "boolean", // fixed * bool true|false
-                                    "n": "string", // name
-                                    "d": "string", // description
-                                    "k": "string" // key
-                                }
-                            },
-                            "k": "string" // key
-                        },
-                        "q": "number",// quantity
-                        "r": "string",// reference
-                        "s": "number",// subtotal
-                        "t": "number"// total
-                    }
-                },
-                "t":"number", // time added
-                "k":"string" // key
-            },
-        },
-        "packs": {
-            "ML14VV97ZRhXzvT6F2WT": { // pack key
-                "a": { // articles list
-                    "yndo39xi2": { // article key
-                        "k": "string",// key
-                        "q": "number", // quantity
-                        "b": { //bonus
-                            "a": "number", //amount
-                            "f": "boolean" // fixed * boolean true|false
-                        }
-                    }
-                },
-                "fp": { //foreced Price
-                    "a": "number", //amount
-                    "f": "boolean" //fixed * boolean true|false
-                },
-                "b": { // bonus
-                    "a": "number", //amount
-                    "f": "boolean", // fixed * boolean true|false
-                },
-                "n": "string", //name
-                "k": "string", // key
-                "t":"number"// time added/changed
-            }
-        },
-        "priceList": {
-            "ZYV06DpEFIAwBFY6kYKL": { // price list key
-                "a": { // articles list
-                    "L12do7ZoaLn8KDmmE5uz": { // it must be the key to a article
-                        "f": { // forced price
-                            "a": "number", //amount
-                            "f": "boolean", // fixed * bool true|false
-                        },
-                        "u":{ // utility
-                            "a":"number", //amount
-                            "f":"boolean" // fixed * bool true|false
-                        },
-                        "t": { // taxes list
-                            "00001": { // tax key
-                                "a": "number", //amount
-                                "f": "boolean", // fixed * bool true|false
-                                "n": "string", // name
-                                "d": "string", // description
-                                "k": "string" // key
-                            }
-                        },
-                        "b": { // bonuses list
-                            "00001": { // bonus key
-                                "a": "number", //amount
-                                "f": "boolean", // fixed * bool true|false
-                                "n": "string", // name
-                                "d": "string", // description
-                                "k": "string" // key
-                            }
-                        },
-                        "k": "string" // key
-                    }
-                },
-                "k": "string", // key
-                "n": "string", //name
-                "e": { // extras list
-                    "00001": { // extra key
-                        "di": "boolean",// discount
-                        "s": "boolean",// surcharge
-                        "a": "number", //amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string", // name
-                        "d": "string", // description
-                        "k": "string" // key
-                    }
-                }
-            }
-        },
-        "reasonsNotBuy": {
-            "89n6Tewj2gDp3f3Gpghi": { // reason key
-                "n": "string",// name
-                "t":"number", // time added/changed
-                "k":"string"  // key
-            }
-        },
-        "routes": {
-            "00001":{ //route key
-                "cl": {
-                 "00001": { // it must be the key to a client
-                        "k":"string",// key
-                        "o": "number" // client order
-                    }
-                },
-                "d": { // days list
-                    "0": "boolean" // day number 0:Sunday, 6:Saturday | true
-                },
-                "n": "string", // name
-                "s": { // sellers list
-                    "00001": "boolean" // it must be the key to a seller  | true
-               },
-               "k":"string",//key
-               "t":"number" // time added/changed
-
-            }
-        },
-        "salesCondition": {
-            "SmEzpw5WdjQNWXUOHUJn": {
-                "b": { // bonuses list
-                    "0101": {
-                        "a": "number", // amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string", // name
-                        "d": "string", // description
-                        "k":"string" // key
-                    }
-                },
-                "d": "string", // description
-                "mc": "string",// money code
-                "n": "string", // name
-                "s": { // surcharges list
-                    "0101": {
-                        "a": "number", // amount
-                        "f": "boolean", // fixed * bool true|false
-                        "n": "string",// name
-                        "d": "string", // description
-                        "k":"string" // key
-                    }
-                },
-                "t":"number" // time added/changed
-            }
-        },
-        "sellers": {
-            "00001": {
-
-                "i": "string", // id number
-                "it":"string", // id type, like dni,root,passport
-                "k":"string", //key
-                "n": "string", // name
-                "p": "string", //password
-                "pi": "string", // profile image
-                "t":"number" // time added/changed
-            }
-        },
-        "stock": {
-            "00100001": { // key composed by deposit key and article key
-                "a": "string", //it must be a key of a article
-                "d": "string", // it must be a key of a deposit
-                "q": "number", // quantity
-                "k":"string",  // key
-                "t":"number"// time added/changed
-            }
-        },
-        "vat": {
-            "001": { // vat key
-                "n": "string", // name
-                "k":"string", // key
-                "t":"number" //time added/changed
-            }
-        }
-    }
-    ```
+  description: "## CONQUER\n\n```json\n{\n    \"apiSalesClients\": {\n        \"00001\":
+    { // client key\n            \"k\": \"string\", // client key\n            \"e\":
+    \"string\", // email\n            \"p\": \"string\", // password\n            \"sp\":
+    0, // setPassword  number 0 | 1   *default 0\n            \"t\":\"number\" //
+    time added\n        }\n    },\n    \"apiSalesNewClients\": {\n        \"Yyxxes1PqR4T8sRock8X\":
+    { // client key\n            \"a\": \"string\", //address\n            \"bn\":
+    \"string\", // business name\n            \"n\": \"string\", // client name\n
+    \           \"e\": \"string\", // email\n            \"l\": \"string\", // locality\n
+    \           \"p\": \"string\", // phone number\n            \"s\": \"string\",
+    // state\n            \"v\": \"string\", // vat condition key\n            \"k\":\"string\",//
+    key\n            \"t\":\"number\" // time added\n        }\n    },\n    \"articles\":
+    {\n        \"L12do7ZoaLn8KDmmE5uz\": { // article key\n            \"i\": \"string\",
+    // url image\n            \"n\": \"string\", //   name\n            \"nc\": 100,
+    // number | net cost\n            \"b\":\"string\",// brand key\n            \"k\":
+    \"string\", // article key\n            \"w\": \"string\", // weight\n            \"t\":\"number\",
+    // time added/changed\n            \"dum\": \"string\", // default unit of measurement\n
+    \           \"um\": {     //unit of measurement\n                \"00001\": {\n
+    \                   \"k\": \"string\", // key\n                    \"e\": 1, //
+    equals | number *default 1\n                    \"n\": \"string\" // name\n                }\n
+    \           }\n        }\n    },\n    \"articlesSettings\": {\n        \"Vf3A4qxoWCHPoYdYjG3J\":
+    {\n            \"a\": \"number\", //amount\n            \"b\": { // bonuses list\n
+    \               \"0101\": {\n                    \"a\": \"number\", // amount\n
+    \                   \"f\": \"boolean\", // fixed * bool true|false\n                    \"n\":
+    \"string\", // name\n                    \"d\": \"string\", // description\n                    \"k\":\"string\"
+    // key\n                }\n            },\n            \"k\":\"string\",//key\n
+    \           \"t\":\"number\",//time added\n            \"s\": { // surcharges
+    list\n                \"0101\": {\n                    \"a\": \"number\", // amount\n
+    \                   \"f\": \"boolean\", // fixed * bool true|false\n                    \"n\":
+    \"string\",// name\n                    \"d\": \"string\", // description\n                    \"k\":\"string\"
+    // key\n                }\n            },\n        }\n    },\n    \"banks\": {\n
+    \       \"0001\": { // bank code\n            \"k\": \"string\", // bank code\n
+    \           \"n\": \"string\",   // bank name\n            \"t\":\"number\"//
+    time added/changed\n        }\n    },\n    \"brands\": {\n        \"00001\": {
+    // brand key\n            \"k\": \"string\", // brand key\n            \"n\":
+    \"string\",   // brand name\n            \"t\":\"number\"// time added/changed\n
+    \       }\n    },\n    \"clients\": {\n        \"00001\": { // client key\n            \"a\":
+    {  // address list\n                \"00001\": {\n                    \"a\": \"string\",
+    // address\n                    \"c\": \"string\", // country\n                    \"d\":
+    \"string\", // description | example: \"work\"\n                    \"n\": \"string\",
+    // neighborhood\n                    \"s\": \"string\", // state\n                    \"z\":
+    \"string\" //  zip\n                }\n            },\n            \"e\": {  //email
+    list\n                \"00001\": {\n                    \"d\": \"string\", //
+    description | example: \"work\"\n                    \"e\": \"string\" //  email\n
+    \               }\n            },\n            \"f\": { //fiscal info\n                \"c\":
+    \"string\", // cuit | cuil\n                \"v\": \"string\" // vat key\n            },\n
+    \           \"i\": \"string\", //id number\n            \"it\": \"string\", //
+    id type | like dni, passport,root\n            \"k\": \"string\", // client key\n
+    \           \"n\": \"string\", // client name\n            \"bn\": \"string\",
+    // business name\n            \"p\": {  //phone list\n                \"00001\":
+    { //phone key\n                    \"k\":\"string\", //phone key\n                    \"d\":
+    \"string\", //description\n                    \"p\": \"string\"  // phone number\n
+    \               }\n            },\n            \"pl\": \"string\", // price list
+    key\n            \"pi\": \"string\", // url profile image\n            \"sc\":
+    \"string\", // sale condition key\n            \"s\": { //sellers list\n                \"00001\":
+    true // seller key * bool true | false\n            },\n            \"b\": { //bonus
+    list\n                \"WXzdjUjQXwWXOWSNWmENH\": { //bonus key\n                    \"k\":\"string\",//key\n
+    \                   \"a\": 10, //amount\n                    \"f\": \"boolean\",
+    // fixed  * bool true | false\n                    \"n\": \"string\",// name\n
+    \                   \"d\": \"string\", // description\n                }\n            },\n
+    \           \"su\": { //surcharge list\n                \"WXzdjUjQXwWXOWSNWmENH\":
+    { //surcharge key\n                    \"k\":\"string\",//key\n                    \"a\":
+    10, //amount\n                    \"f\": \"boolean\", // fixed  * bool true |
+    false\n                    \"n\": \"string\",// name\n                    \"d\":
+    \"string\", // description\n                }\n            },\n            \"ta\":
+    { // taxes list\n                \"WXzdjUjQXwWXOWSNWmENH\": { //tax key\n                    \"k\":\"string\",//key\n
+    \                   \"a\": 10, //amount\n                    \"f\": \"boolean\",
+    // fixed * bool true | false\n                    \"n\": \"string\", // name\n
+    \                   \"d\": \"string\",  // description\n                }\n            },\n
+    \           \"t\":\"number\" // time added/changed\n        }\n    },\n    \"collections\":
+    {\n        \"VRfZ4okA0xQAZ3oE5GKj\": { // collection key\n            \"c\": {
+    // client info\n                \"f\": { // fiscal info\n                    \"c\":
+    \"string\", // cuil-cuit\n                    \"v\": \"string\", // vat key\n
+    \               },\n                \"i\": \"string\",// id number\n                \"it\":\"string\",
+    // id type, like dni,root,passport\n                \"n\": \"string\", //ma,e\n
+    \               \"pl\": \"string\",// price list key\n                \"sc\":
+    \"string\",// sale condition key\n            },\n            \"id\": { // imputed
+    documents list\n                \"1GxFloYeHzVMNXxyVtEM\": { // imputed document
+    key\n                    \"c\": { // client info\n                        \"k\":
+    \"string\", // client key\n                        \"n\": \"string\", // client
+    name\n                    },\n                    \"d\": { // document info\n
+    \                       \"c\": \"string\", // document code\n                        \"d\":
+    \"number\", // date\n                        \"dd\": \"number\", // due date\n
+    \                       \"n\": \"string\", // number\n                        \"ia\":
+    \"number\",// initial amount\n                        \"pa\": \"number\", // paid
+    amount\n                        \"pos\": \"string\", // point of sale\n                        \"qn\":
+    \"number\", //quote number\n                        \"t\": \"string\", // type\n
+    \                   },\n                    \"k\": \"string\", //document key\n
+    \               },\n            },\n            \"l\": \"string\",// license key\n
+    \           \"p\": { // position\n                \"c\": { //coordinates\n                    \"la\":
+    \"string\",// latitude\n                    \"lo\": \"string\" // longitude\n
+    \               },\n                \"m\": \"boolean\" // mocked\n            },\n
+    \           \"py\": { // payments list\n                \"56vVH3Qeg7ixH7bajFO4\":
+    { //payment key\n                    \"a\": \"number\", // amount\n                    \"k\":
+    \"string\",// key\n                    \"m\": \"number\",// method\n                    \"t\":
+    \"number\",// time\n                },\n            },\n            \"s\": \"string\",
+    // seller key\n            \"st\": \"number\", // status\n            \"t\": \"number\",
+    // time\n            \"r\": \"number\", // receipt number\n            \"ta\":
+    \"number\",// total amount\n            \"k\":\"string\"//key\n        }\n\t\t\t\t\t},\n
+    \   \"companies\": {\n        \"00001\": {\n            \"k\":\"string\",// company
+    key\n            \"n\": \"string\", //    name\n            \"t\":\"number\" //
+    time added/changed\n        }\n    },\n    \"currentAccount\": {\n        \"1GxFloYeHzVMNXxyVtEM\":
+    { // key\n            \"c\": { // client info\n                \"k\": \"string\",
+    // client key\n                \"n\": \"string\", // client name\n            },\n
+    \           \"d\": { // document info\n                \"c\": \"string\", // document
+    code\n                \"d\": \"number\", // date\n                \"dd\": \"number\",
+    // due date\n                \"n\": \"string\", // number\n                \"ia\":
+    \"number\",// initial amount\n                \"pa\": \"number\", // paid amount\n
+    \               \"pos\": \"string\", // point of sale\n                \"qn\":
+    \"number\", //quote number\n                \"t\": \"string\", // type\n            },\n
+    \           \"k\": \"string\", //document key\n            \"t\":\"number\" //
+    time added/changed\n        }\n    },\n    \"deposits\": {\n        \"HttPRGVB7m7Ie8uGJHzX\":
+    { // deposit key\n            \"k\":\"string\", // key\n            \"n\": \"string\",
+    \ //name\n            \"t\":\"number\"// time added/changed\n\n        }\n    },\n
+    \   \"groupers\": {\n        \"Uiw2pQUS3gU8XTieMVna\": { // key\n            \"a\":
+    { // articles list\n                \"QU63Lm6CaMspN0qXEuVR\": { // article key\n
+    \                   \"k\":\"string\", // key\n                    \"o\": \"number\",
+    // order\n                },\n            },\n            \"g\": { // groupers
+    list\n                //... repeat groupers structure\n            },\n            \"k\":\"string\",
+    // key\n            \"n\": \"string\", //name\n            \"i\": \"string\",
+    // image\n            \"t\":\"number\"// time added/changed\n\n        }\n    },\n
+    \   \"news\": {\n        \"TtQ6O940SuaONNLpY1Hw\": { //key\n            \"de\":
+    { // destination\n                \"2\": \"boolean\" // destination key * bool
+    true | false\n            },\n            \"k\":\"string\", // key\n            \"i\":
+    \"string\",// image\n            \"tm\": \"number\", // time of new\n            \"ti\":
+    \"string\", // title\n            \"d\": \"string\", // description\n            \"t\":\"number\"
+    // time added/changed\n        }\n    },\n    \"notBuy\": {\n        \"MY4Md2hxTnhZDjz4Fg0f\":
+    {\n            \"c\": { // client info\n                \"f\": { // fiscal info\n
+    \                   \"c\": \"string\", // cuil-cuit\n                    \"v\":
+    \"string\", // vat key\n                },\n                \"i\": \"string\",//
+    id number\n                \"it\":\"string\", // id type, like dni,root,passport\n
+    \               \"n\": \"string\", //ma,e\n                \"pl\": \"string\",//
+    price list key\n                \"sc\": \"string\",// sale condition key\n            },\n
+    \           \"l\": \"string\",// license key\n            \"p\": { // position\n
+    \               \"c\": { //coordinates\n                    \"la\": \"string\",//
+    latitude\n                    \"lo\": \"string\" // longitude\n                },\n
+    \               \"m\": \"boolean\" // mocked\n            },\n            \"r\":
+    { // reason\n                \"k\": \"string\",// key\n                \"n\":
+    \"string\" // name\n            },\n            \"s\": \"string\", // seller key\n
+    \           \"t\": \"number\" // time\n        }\n    },\n    \"offers\": {\n
+    \       \"0001\":{ // offer key\n            \"de\": { // destination\n                \"2\":
+    \"boolean\" // destination key * bool true | false\n            },\n            \"k\":\"string\",
+    // key\n            \"i\": \"string\",// image\n            \"tm\": \"number\",
+    // time of new\n            \"ti\": \"string\", // title\n            \"d\": \"string\",
+    // description\n            \"p\":\"string\", // pack key\n            \"t\":\"number\"
+    // time added/changed\n        }\n\n    },\n    \"orders\": {\n        \"sBzIu8La6HBOhjMQ1ySR\":
+    {\n            \"c\": { // client info\n                \"f\": { // fiscal info\n
+    \                   \"c\": \"string\", // cuil-cuit\n                    \"v\":
+    \"string\", // vat key\n                },\n                \"i\": \"string\",//
+    id number\n                \"it\":\"string\", // id type, like dni,root,passport\n
+    \               \"n\": \"string\", //ma,e\n                \"pl\": \"string\",//
+    price list key\n                \"sc\": \"string\",// sale condition key\n            },\n
+    \           \"l\": \"string\",// license key\n            \"p\": { // position\n
+    \               \"c\": { //coordinates\n                    \"la\": \"string\",//
+    latitude\n                    \"lo\": \"string\" // longitude\n                },\n
+    \               \"m\": \"boolean\" // mocked\n            },\n            \"f\":
+    \"boolean\",// finished\n            \"gb\": { // global bonus\n                \"f\":
+    \"boolean\", // fixed\n                \"a\": \"number\" // amount\n            },\n
+    \           \"tt\": { // totals\n                \"to\": \"number\", // total
+    order\n                \"tp\": \"number\", // total packs\n                \"t\":
+    \"number\" // total\n            },\n            \"ts\": \"number\", // time start\n
+    \           \"te\": \"number\", // time end\n            \"s\": \"number\", //
+    state\n            \"se\": \"string\", // seller key\n            \"sc\": \"string\",
+    // sale condition key\n            \"or\": \"number\", // origin\n            \"co\":
+    \"string\",// company\n            \"ob\": \"qwe\",// observation\n            \"o\":
+    { // order detail\n                \"dTjnqBSYWqIIJlyRosNo\": {\n                    \"b\":
+    \"number\", // bonus\n                    \"e\": { // extras list\n                        \"00001\":
+    { // extra key\n                            \"di\": \"boolean\",// discount\n
+    \                           \"s\": \"boolean\",// surcharge\n                            \"a\":
+    \"number\", //amount\n                            \"f\": \"boolean\", // fixed
+    * bool true|false\n                            \"n\": \"string\", // name\n                            \"d\":
+    \"string\", // description\n                            \"k\": \"string\" // key\n
+    \                       }\n                    },\n                    \"k\":
+    \"string\",// key\n                    \"n\": \"string\",//name\n                    \"nc\":
+    \"number\",// net cost\n                    \"pld\": { //price list data\n                        \"t\":
+    { // taxes list\n                            \"00001\": { // tax key\n                                \"a\":
+    \"number\", //amount\n                                \"f\": \"boolean\", // fixed
+    * bool true|false\n                                \"n\": \"string\", // name\n
+    \                               \"d\": \"string\", // description\n                                \"k\":
+    \"string\" // key\n                            }\n                        },\n
+    \                       \"f\": { // forced price\n                            \"a\":
+    \"number\", //amount\n                            \"f\": \"boolean\", // fixed
+    * bool true|false\n                        },\n                        \"n\":
+    \"string\",// name\n                        \"b\": { // bonuses list\n                            \"00001\":
+    { // bonus key\n                                \"a\": \"number\", //amount\n
+    \                               \"f\": \"boolean\", // fixed * bool true|false\n
+    \                               \"n\": \"string\", // name\n                                \"d\":
+    \"string\", // description\n                                \"k\": \"string\"
+    // key\n                            }\n                        },\n                        \"k\":
+    \"string\" // key\n                    },\n                    \"q\": \"number\",//
+    quantity\n                    \"r\": \"string\",// reference\n                    \"s\":
+    \"number\",// subtotal\n                    \"t\": \"number\"// total\n                }\n
+    \           },\n            \"t\":\"number\", // time added\n            \"k\":\"string\"
+    // key\n        },\n    },\n    \"packs\": {\n        \"ML14VV97ZRhXzvT6F2WT\":
+    { // pack key\n            \"a\": { // articles list\n                \"yndo39xi2\":
+    { // article key\n                    \"k\": \"string\",// key\n                    \"q\":
+    \"number\", // quantity\n                    \"b\": { //bonus\n                        \"a\":
+    \"number\", //amount\n                        \"f\": \"boolean\" // fixed * boolean
+    true|false\n                    }\n                }\n            },\n            \"fp\":
+    { //foreced Price\n                \"a\": \"number\", //amount\n                \"f\":
+    \"boolean\" //fixed * boolean true|false\n            },\n            \"b\": {
+    // bonus\n                \"a\": \"number\", //amount\n                \"f\":
+    \"boolean\", // fixed * boolean true|false\n            },\n            \"n\":
+    \"string\", //name\n            \"k\": \"string\", // key\n            \"t\":\"number\"//
+    time added/changed\n        }\n    },\n    \"priceList\": {\n        \"ZYV06DpEFIAwBFY6kYKL\":
+    { // price list key\n            \"a\": { // articles list\n                \"L12do7ZoaLn8KDmmE5uz\":
+    { // it must be the key to a article\n                    \"f\": { // forced price\n
+    \                       \"a\": \"number\", //amount\n                        \"f\":
+    \"boolean\", // fixed * bool true|false\n                    },\n                    \"u\":{
+    // utility\n                        \"a\":\"number\", //amount\n                        \"f\":\"boolean\"
+    // fixed * bool true|false\n                    },\n                    \"t\":
+    { // taxes list\n                        \"00001\": { // tax key\n                            \"a\":
+    \"number\", //amount\n                            \"f\": \"boolean\", // fixed
+    * bool true|false\n                            \"n\": \"string\", // name\n                            \"d\":
+    \"string\", // description\n                            \"k\": \"string\" // key\n
+    \                       }\n                    },\n                    \"b\":
+    { // bonuses list\n                        \"00001\": { // bonus key\n                            \"a\":
+    \"number\", //amount\n                            \"f\": \"boolean\", // fixed
+    * bool true|false\n                            \"n\": \"string\", // name\n                            \"d\":
+    \"string\", // description\n                            \"k\": \"string\" // key\n
+    \                       }\n                    },\n                    \"k\":
+    \"string\" // key\n                }\n            },\n            \"k\": \"string\",
+    // key\n            \"n\": \"string\", //name\n            \"e\": { // extras
+    list\n                \"00001\": { // extra key\n                    \"di\": \"boolean\",//
+    discount\n                    \"s\": \"boolean\",// surcharge\n                    \"a\":
+    \"number\", //amount\n                    \"f\": \"boolean\", // fixed * bool
+    true|false\n                    \"n\": \"string\", // name\n                    \"d\":
+    \"string\", // description\n                    \"k\": \"string\" // key\n                }\n
+    \           }\n        }\n    },\n    \"reasonsNotBuy\": {\n        \"89n6Tewj2gDp3f3Gpghi\":
+    { // reason key\n            \"n\": \"string\",// name\n            \"t\":\"number\",
+    // time added/changed\n            \"k\":\"string\"  // key\n        }\n    },\n
+    \   \"routes\": {\n        \"00001\":{ //route key\n            \"cl\": {\n             \"00001\":
+    { // it must be the key to a client\n                    \"k\":\"string\",// key\n
+    \                   \"o\": \"number\" // client order\n                }\n            },\n
+    \           \"d\": { // days list\n                \"0\": \"boolean\" // day number
+    0:Sunday, 6:Saturday | true\n            },\n            \"n\": \"string\", //
+    name\n            \"s\": { // sellers list\n                \"00001\": \"boolean\"
+    // it must be the key to a seller  | true\n           },\n           \"k\":\"string\",//key\n
+    \          \"t\":\"number\" // time added/changed\n\n        }\n    },\n    \"salesCondition\":
+    {\n        \"SmEzpw5WdjQNWXUOHUJn\": {\n            \"b\": { // bonuses list\n
+    \               \"0101\": {\n                    \"a\": \"number\", // amount\n
+    \                   \"f\": \"boolean\", // fixed * bool true|false\n                    \"n\":
+    \"string\", // name\n                    \"d\": \"string\", // description\n                    \"k\":\"string\"
+    // key\n                }\n            },\n            \"d\": \"string\", // description\n
+    \           \"mc\": \"string\",// money code\n            \"n\": \"string\", //
+    name\n            \"s\": { // surcharges list\n                \"0101\": {\n                    \"a\":
+    \"number\", // amount\n                    \"f\": \"boolean\", // fixed * bool
+    true|false\n                    \"n\": \"string\",// name\n                    \"d\":
+    \"string\", // description\n                    \"k\":\"string\" // key\n                }\n
+    \           },\n            \"t\":\"number\" // time added/changed\n        }\n
+    \   },\n    \"sellers\": {\n        \"00001\": {\n\n            \"i\": \"string\",
+    // id number\n            \"it\":\"string\", // id type, like dni,root,passport\n
+    \           \"k\":\"string\", //key\n            \"n\": \"string\", // name\n
+    \           \"p\": \"string\", //password\n            \"pi\": \"string\", //
+    profile image\n            \"t\":\"number\" // time added/changed\n        }\n
+    \   },\n    \"stock\": {\n        \"00100001\": { // key composed by deposit key
+    and article key\n            \"a\": \"string\", //it must be a key of a article\n
+    \           \"d\": \"string\", // it must be a key of a deposit\n            \"q\":
+    \"number\", // quantity\n            \"k\":\"string\",  // key\n            \"t\":\"number\"//
+    time added/changed\n        }\n    },\n    \"vat\": {\n        \"001\": { // vat
+    key\n            \"n\": \"string\", // name\n            \"k\":\"string\", //
+    key\n            \"t\":\"number\" //time added/changed\n        }\n    }\n}\n```\n"
 paths:
-  "/transaction/":
+  "/":
     parameters: []
-    post:
+    get:
       tags:
       - Read
       summary: Get information from database
       description: |-
-        Using the `action` parameter in read, you can get information from database.
         It is possible to specify the search path `ref` in each search.
 
          In this example `sellers` represents a reference to the table that contains all the sellers, with only that reference you get the whole list of sellers.
@@ -1236,7 +613,6 @@ paths:
               Request:
                 token: oP0zw3GV233OxPofGDin
                 version: '1.1'
-                action: read
                 ref: sellers/`Wrong seller`
         '403':
           description: ''
@@ -1246,26 +622,12 @@ paths:
               Request:
                 token: "`Wrong Token`"
                 version: '1.1'
-                action: read
                 ref: sellers/001
-        '405':
-          description: ''
-          examples:
-            application/json:
-              Error: Invalid Action
-              Request:
-                token: oP0zw3GV233OxPofGDin
-                version: '1.1'
-                action: "`Wrong action`"
-                ref: sellers/001
-  "/transaction":
-    parameters: []
     post:
       tags:
       - Set
       summary: Set information in database
       description: |-
-        Using the `action` parameter in set, you can set information in database.
         It is necessary to specify the reference path `ref`.
 
          In this example `sellers` represents a reference to the table that contains all the sellers, with only that reference you can set the whole list of sellers.
@@ -1300,7 +662,6 @@ paths:
               Request:
                 token: oP0zw3GV233OxPofGDin
                 version: '1.1'
-                action: set
                 ref: sellers/001
         '403':
           description: ''
@@ -1310,36 +671,17 @@ paths:
               Request:
                 token: "`Wrong Token`"
                 version: '1.1'
-                action: set
                 ref: sellers/001
                 val:
                   code: '001'
                   id: '0000'
                   name: CAJERO CENTRAL
                   password: '0'
-        '405':
-          description: ''
-          examples:
-            application/json:
-              Error: Invalid Action
-              Request:
-                token: oP0zw3GV233OxPofGDin
-                version: '1.1'
-                action: "`Wrong action`"
-                ref: sellers/001
-                val:
-                  code: '001'
-                  id: '0000'
-                  name: CAJERO CENTRAL
-                  password: '0'
-  "/transaction/#":
-    parameters: []
-    post:
+    put:
       tags:
       - Update
       summary: Update information in database
       description: |-
-        Using the `action` parameter in set, you can update information in database.
         It is necessary to specify the reference path `ref`.
 
          In this example `sellers` represents a reference to the table that contains all the sellers, with only that reference you can update the whole list of sellers.
@@ -1374,7 +716,6 @@ paths:
               Request:
                 token: oP0zw3GV233OxPofGDin
                 version: '1.1'
-                action: set
                 ref: sellers/001
         '403':
           description: ''
@@ -1384,36 +725,17 @@ paths:
               Request:
                 token: "`Wrong Token`"
                 version: '1.1'
-                action: set
                 ref: sellers/001
                 val:
                   code: '001'
                   id: '0000'
                   name: CAJERO CENTRAL
                   password: '0'
-        '405':
-          description: ''
-          examples:
-            application/json:
-              Error: Invalid Action
-              Request:
-                token: oP0zw3GV233OxPofGDin
-                version: '1.1'
-                action: "`Wrong action`"
-                ref: sellers/001
-                val:
-                  code: '001'
-                  id: '0000'
-                  name: CAJERO CENTRAL
-                  password: '0'
-  "/transaction/?":
-    parameters: []
-    post:
+    delete:
       tags:
       - Delete
       summary: Delete information from database
       description: |-
-        Using the `action` parameter in set, you can delete information in database.
         It is necessary to specify the reference path `ref`.
 
          In this example `sellers` represents a reference to the table that contains all the sellers, with only that reference you can delete the whole list of sellers.
@@ -1440,16 +762,6 @@ paths:
           examples:
             application/json:
               success: Successfully data!
-        '400':
-          description: ''
-          examples:
-            application/json:
-              Error: There is no data to set
-              Request:
-                token: oP0zw3GV233OxPofGDin
-                version: '1.1'
-                action: set
-                ref: sellers/001
         '403':
           description: ''
           examples:
@@ -1458,35 +770,17 @@ paths:
               Request:
                 token: "`Wrong Token`"
                 version: '1.1'
-                action: set
                 ref: sellers/001
-                val:
-        '405':
-          description: ''
-          examples:
-            application/json:
-              Error: Invalid Action
-              Request:
-                token: oP0zw3GV233OxPofGDin
-                version: '1.1'
-                action: "`Wrong action`"
-                ref: sellers/001
-                val:
   "/struct/":
     parameters: []
 definitions:
   BodyRead:
     type: object
     required:
-    - action
     - version
     - token
     - ref
     properties:
-      action:
-        description: read  &nbsp;&nbsp;->&nbsp;&nbsp; (Action to Read)
-        type: string
-        example: read
       version:
         description: 1.1  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)
         type: string
@@ -1502,16 +796,11 @@ definitions:
   BodySet:
     type: object
     required:
-    - action
     - version
     - token
     - ref
     - val
     properties:
-      action:
-        description: set  &nbsp;&nbsp;->&nbsp;&nbsp; (Action to Set)
-        type: string
-        example: set
       version:
         description: 1.1  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)
         type: string
@@ -1535,16 +824,10 @@ definitions:
   BodyDelete:
     type: object
     required:
-    - action
     - version
     - token
     - ref
-    - val
     properties:
-      action:
-        description: set  &nbsp;&nbsp;->&nbsp;&nbsp; (Action to Set)
-        type: string
-        example: set
       version:
         description: 1.1  &nbsp;&nbsp;&nbsp;&nbsp;->&nbsp;&nbsp; (Current Version)
         type: string
@@ -1557,7 +840,3 @@ definitions:
         description: Reference Table
         type: string
         example: sellers/001
-      val:
-        description: null  &nbsp;&nbsp;->&nbsp;&nbsp; (Must be null)
-        type: string
-        example:
